@@ -1,0 +1,27 @@
+{% extends "layout-sidebar-right.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}{% trans 'title-contacts_us-successful_message_sent' %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="breadcrumbs">
+      <li><a href="{% url 'homepage' %}">{% trans 'home' %}</a></li>
+      <li class="current">{% trans 'contacts' %}</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="large-12 columns">
+    <h3>{% trans 'contacts' %}</h3>
+    <p>{% trans 'message-contact_us-successful_message_sent' %}</p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: www/urls.py:35
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-07 15:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/frontend/models.py:26
+msgid "first_name"
+msgstr "name"
+
+#: app/frontend/models.py:31
+msgid "last_name"
+msgstr "surname"
+
+#: app/frontend/models.py:42
+msgid "artist"
+msgstr ""
+
+#: app/frontend/models.py:43
+msgid "artists"
+msgstr ""
+
+#: app/frontend/models.py:49 app/frontend/models.py:159
+#: app/frontend/models.py:180 app/frontend/models.py:211
+msgid "title"
+msgstr ""
+
+#: app/frontend/models.py:51
+msgid "slug"
+msgstr ""
+
+#: app/frontend/models.py:55
+msgid "excerpt_it"
+msgstr "excerpt (it)"
+
+#: app/frontend/models.py:58
+msgid "description_it"
+msgstr "description (it)"
+
+#: app/frontend/models.py:61
+msgid "excerpt_en"
+msgstr "excerpt (en)"
+
+#: app/frontend/models.py:64
+msgid "description_en"
+msgstr "description (en)"
+
+#: app/frontend/models.py:67
+msgid "authors"
+msgstr ""
+
+#: app/frontend/models.py:69
+msgid "address"
+msgstr ""
+
+#: app/frontend/models.py:71 app/frontend/models.py:207
+msgid "begun_at"
+msgstr "date begin"
+
+#: app/frontend/models.py:73 app/frontend/models.py:209
+msgid "ended_at"
+msgstr "date end"
+
+#: app/frontend/models.py:84
+msgid "exhibit"
+msgstr ""
+
+#: app/frontend/models.py:85 app/frontend/templates/exhibit_list.html:8
+#: app/frontend/templates/exhibit_list.html:15
+msgid "exhibits"
+msgstr ""
+
+#: app/frontend/models.py:132
+msgid "exhibit_image"
+msgstr "exhibit image"
+
+#: app/frontend/models.py:133
+msgid "exhibit_images"
+msgstr "exhibit images"
+
+#: app/frontend/models.py:160
+msgid "language"
+msgstr ""
+
+#: app/frontend/models.py:166 app/frontend/models.py:178
+#: app/frontend/templates/base.html:65 app/frontend/templates/base.html:92
+#: app/frontend/templates/resume.html:6 app/frontend/templates/resume.html:13
+#: app/frontend/templates/resume.html:26
+msgid "resume"
+msgstr ""
+
+#: app/frontend/models.py:167
+msgid "resumes"
+msgstr ""
+
+#: app/frontend/models.py:182 app/frontend/models.py:212
+msgid "description"
+msgstr ""
+
+#: app/frontend/models.py:186
+msgid "position"
+msgstr ""
+
+#: app/frontend/models.py:191
+msgid "resume_section"
+msgstr "resume section"
+
+#: app/frontend/models.py:192
+msgid "resume_sections"
+msgstr "resume sections"
+
+#: app/frontend/models.py:205 app/frontend/models.py:218
+msgid "resume_event"
+msgstr "resume event"
+
+#: app/frontend/models.py:219
+msgid "resume_events"
+msgstr "resume events"
+
+#: app/frontend/templates/_form_contacts_row.html:4
+#: app/frontend/templates/contacts.html:66
+msgid "contacts_form_message"
+msgstr "message"
+
+#: app/frontend/templates/_slideshow.html:5
+#, python-format
+msgid "Picture exhibit %(exhibit)s"
+msgstr ""
+
+#: app/frontend/templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr ""
+
+#: app/frontend/templates/base.html:16
+msgid "default_title"
+msgstr ""
+
+#: app/frontend/templates/base.html:42
+msgid "subtitle_logo"
+msgstr "curator and art critic"
+
+#: app/frontend/templates/base.html:51
+msgid "english_language"
+msgstr "english"
+
+#: app/frontend/templates/base.html:55
+msgid "italian_language"
+msgstr "italiano"
+
+#: app/frontend/templates/base.html:64 app/frontend/templates/base.html:91
+msgid "navbar_exhibits"
+msgstr "archive exhibits"
+
+#: app/frontend/templates/base.html:66 app/frontend/templates/base.html:93
+#: app/frontend/templates/contact_us_thank_you.html:14
+#: app/frontend/templates/contact_us_thank_you.html:23
+#: app/frontend/templates/contacts.html:7
+#: app/frontend/templates/contacts.html:14
+msgid "contacts"
+msgstr ""
+
+#: app/frontend/templates/base.html:86
+msgid "powered_by"
+msgstr "Powered by"
+
+#: app/frontend/templates/base.html:94
+msgid "reserved_area"
+msgstr "reserved area"
+
+#: app/frontend/templates/contact_us_thank_you.html:7
+msgid "title-contacts_us-successful_message_sent"
+msgstr "Message succesfully sent!"
+
+#: app/frontend/templates/contact_us_thank_you.html:13
+#: app/frontend/templates/contacts.html:13
+#: app/frontend/templates/exhibit_list.html:14
+#: app/frontend/templates/resume.html:12
+msgid "home"
+msgstr ""
+
+#: app/frontend/templates/contact_us_thank_you.html:24
+msgid "message-contact_us-successful_message_sent"
+msgstr "Thank you for sent a message. I'll answer you as soon as possible."
+
+#: app/frontend/templates/contacts.html:23
+msgid "contacts_page_title"
+msgstr "send a message"
+
+#: app/frontend/templates/contacts.html:24
+msgid "contacts_excerpt"
+msgstr "for any information fill following fields"
+
+#: app/frontend/templates/contacts.html:32
+msgid "contacts_form_name"
+msgstr "name"
+
+#: app/frontend/templates/contacts.html:44
+msgid "contacts_form_email"
+msgstr "email"
+
+#: app/frontend/templates/contacts.html:55
+msgid "contacts_form_subject"
+msgstr "subject"
+
+#: app/frontend/templates/contacts.html:77
+msgid "contacts_form_submit"
+msgstr "submit"
+
+#: app/frontend/templates/contacts.html:89
+msgid "contact_box_title"
+msgstr "contacts"
+
+#: app/frontend/templates/contacts.html:92
+msgid "email_title"
+msgstr "email"
+
+#: app/frontend/templates/contacts.html:96
+msgid "address_title"
+msgstr "address"
+
+#: app/frontend/templates/contacts.html:97
+msgid "address_info"
+msgstr "Via Principe Amedeo 126/b 00185 Rome, Italy"
+
+#: app/frontend/templates/exhibit_hp_window.html:10
+#: app/frontend/templates/exhibit_hp_window.html:12
+#: app/frontend/templates/exhibit_list.html:27
+#: app/frontend/templates/exhibit_list.html:29
+#, python-format
+msgid "Preview picture exhibit %(exhibit)s"
+msgstr ""
+
+#: app/frontend/templates/exhibit_hp_window.html:28
+msgid "current_exhibits_empty_list"
+msgstr "there are no exhibits"
+
+#: app/frontend/templates/exhibit_list.html:49
+msgid "empty_exhibits_list_message"
+msgstr "currently there are no exhibits"
+
+#: app/frontend/templates/exhibit_show.html:24
+msgid "exhibit_info"
+msgstr "info"
+
+#: app/frontend/templates/exhibit_show.html:26
+msgid "when"
+msgstr ""
+
+#: app/frontend/templates/exhibit_show.html:28
+msgid "time_from"
+msgstr "from"
+
+#: app/frontend/templates/exhibit_show.html:30
+msgid "time_to"
+msgstr "to"
+
+#: app/frontend/templates/exhibit_show.html:34
+msgid "where"
+msgstr ""
+
+#: app/frontend/templates/homepage.html:7
+msgid "homepage_title"
+msgstr "curator and art critic"
+
+#: app/frontend/templates/homepage.html:41
+msgid "current_exhibits_title"
+msgstr "active exhibits"
+
+#: app/frontend/templates/homepage.html:48
+msgid "next_exhibits_title"
+msgstr "next exhibits"
+
+#: app/frontend/templates/layout-sidebar-right.html:17
+#: app/frontend/templates/resume.html:82
+msgid "active_exhibits"
+msgstr "active exhibits"
+
+#: app/frontend/templates/layout-sidebar-right.html:28
+msgid "past_exhibits"
+msgstr "past exhibits"
+
+#: app/frontend/templates/resume.html:23
+#: app/frontend/templates/resume_pdf.html:19
+msgid "page_in_construction"
+msgstr "page in construction"
+
+#: app/frontend/templates/resume.html:27
+#: app/frontend/templates/resume_pdf.html:23
+msgid "cv_birthdate"
+msgstr "born in Rome on 1961"
+
+#: app/frontend/templates/resume.html:35
+msgid "back_to_top"
+msgstr "top"
+
+#: app/frontend/templates/resume.html:73
+msgid "sections"
+msgstr ""
+
+#: www/urls.py:26
+msgid "contacts/successful-message-sent/"
+msgstr ""
+
+#: www/urls.py:27
+msgid "contacts/"
+msgstr ""
+
+#: www/urls.py:28
+msgid "resume/"
+msgstr ""
+
+#: www/urls.py:29
+msgid "exhibit/<slug:exhibit_slug>"
+msgstr ""
+
+#: www/urls.py:30
+msgid "exhibits/"
+msgstr ""

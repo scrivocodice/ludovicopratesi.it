@@ -1,0 +1,33 @@
+{% extends "mail_templated/base.tpl" %}
+
+{% load staticfiles %}
+
+{% block subject %}
+{% autoescape off %}
+Ludovico Pratesi, richiesta di contatto.
+{% endautoescape %}
+{% endblock %}
+
+{% block body %}
+Gentile {{ contact.sender_name|capfirst }}
+
+grazie per avermi contattato.
+
+Risponder&agrave; alla sua richiesta il prima possibile.
+
+Cordiali saluti
+
+Ludovico Pratesi
+{% endblock %}
+
+{% block html %}
+Gentile {{ contact.sender_name|capfirst }}
+<br><br>
+grazie per avermi contattato.
+<br>
+Risponder&agrave; alla sua richiesta entro 48 ore.
+<br><br>
+Cordiali saluti
+<br>
+Ludovico Pratesi
+{% endblock %}

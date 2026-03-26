@@ -1,0 +1,32 @@
+{% if exhibit_list.paginator.num_pages > 1 %}
+<hr/>
+<div class="pagination-centered">
+  <ul class="pagination">
+    {% if exhibit_list.has_previous %}
+    <li class="arrow">
+      <a href="?page={{ exhibit_list.previous_page_number }}">&laquo;</a>
+    </li>
+    {% else %}
+    <li class="arrow unavailable">
+      <a href="">&laquo;</a>
+    </li>
+    {% endif %}
+
+    {% for num in exhibit_list.paginator.page_range %}
+    <li {% if num == exhibit_list.number %}class="current"{% endif %}>
+      <a href="?page={{ num }}">{{ num }}</a>
+    </li>
+    {% endfor %}
+
+    {% if exhibit_list.has_next %}
+    <li class="arrow">
+      <a href="?page={{ exhibit_list.next_page_number }}">&raquo;</a>
+    </li>
+    {% else %}
+    <li class="arrow unavailable">
+      <a href="">&raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,12 @@
+{% load i18n %}
+<div class="row">
+  <div class="small-3 columns {% if form.message.errors %}error{%endif%}">
+    <label for="right-label" class="right inline">{% trans 'contacts_form_message' %}</label>
+  </div>
+  <div class="small-9 columns {% if form.message.errors %}error{%endif%}">
+    {{ form.message }}
+    {% if form.message.errors %}
+    <small class="error">{{ form.message.errors.0 }}</small>
+    {% endif %}
+  </div>
+</div>

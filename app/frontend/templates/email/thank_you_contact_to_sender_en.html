@@ -1,0 +1,33 @@
+{% extends "mail_templated/base.tpl" %}
+
+{% load staticfiles %}
+
+{% block subject %}
+{% autoescape off %}
+Ludovico Pratesi, contact ask.
+{% endautoescape %}
+{% endblock %}
+
+{% block body %}
+Dear {{ contact.sender_name|capfirst }},
+
+thank you to contact me.
+
+I will answer to your request as soon as possible.
+
+Best regards
+
+Ludovico Pratesi
+{% endblock %}
+
+{% block html %}
+Dear {{ contact.sender_name|capfirst }},
+<br><br>
+thank you to contact me.
+<br>
+I will answer to your request as soon as possible.
+<br><br>
+Best regards
+<br>
+Ludovico Pratesi
+{% endblock %}

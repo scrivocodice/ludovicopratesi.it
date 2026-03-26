@@ -1,0 +1,13 @@
+django
+psycopg2-binary==2.8.6
+easy-thumbnails
+django-mail-templated
+django_compressor
+django-tinymce
+django-easy-pdf
+xhtml2pdf>=0.2b1
+html5lib
+
+rcssmin --install-option="--without-c-extensions"
+rjsmin --install-option="--without-c-extensions"
+reportlab
