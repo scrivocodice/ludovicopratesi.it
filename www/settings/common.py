@@ -35,7 +35,7 @@ USE_I18N = True
 
 # timezone settigs
 TIME_ZONE = 'Europe/Rome'
-USE_TZ = True
+USE_TZ = False
 USE_L10N = True
 
 SECRET_KEY = 'tl0$hg*+m)a*!nb3#cpau@z!es2c7visyibnx&9j_a382pnidf'
