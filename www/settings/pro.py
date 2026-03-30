@@ -1,6 +1,16 @@
 from .common import *
 
-DEBUG = False
+# DEBUG = False
+# ALLOWED_HOSTS = [
+#     "ludovicopratesi.it",
+#     "www.ludovicopratesi.it",
+#     ".ludovicopratesi.it",
+#     "127.0.0.1",
+#     "localhost",
+# ]
+DEBUG = True
+ALLOWED_HOSTS = ["*"]
+
 
 ADMINS = (
     ('Piergiorgio Faraglia', 'p.faraglia@gmail.com'),
@@ -9,22 +19,36 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ludovicopratesi_db',
-        'USER': 'ludovicopratesi',
-        'PASSWORD': 'P"xE:Mar>Vh\g5u3',
+        'USER': 'ludovicopratesi_usr',
+        'PASSWORD': 'Unmarked7-Pampers0-Banked4-Estimator1',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+        'CONN_MAX_AGE': 0,
+        'OPTIONS': {
+            'options': '-c timezone=UTC'
+        },
     }
 }
 
-ALLOWED_HOSTS = ["."+DOMAIN_NAME]
 WSGI_APPLICATION = 'www.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://ludovicopratesi.it",
+    "https://www.ludovicopratesi.it",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 # media settings
-MEDIA_ROOT = '/home/ludovicopratesi/media/'
+MEDIA_ROOT = "/srv/apps/ludovicopratesi/media"
 MEDIA_URL = 'https://media.%s/' % DOMAIN_NAME
 
 # static settings
-STATIC_ROOT = '/home/ludovicopratesi/static/'
+STATIC_ROOT = "/srv/apps/ludovicopratesi/staticfiles"
 STATIC_URL = '/static/'
 
 # email settings
@@ -46,7 +70,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '/home/ludovicopratesi/var/log/django.error.log',
+            'filename': '/srv/logs/ludovicopratesi.django.error.log',
         },
     },
     'loggers': {
