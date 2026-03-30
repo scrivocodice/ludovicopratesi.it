@@ -36,15 +36,15 @@
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="section-label mb-2">Mostre attive</p>
-          <h2 class="section-title">Una griglia da galleria, con card pensate come poster digitali.</h2>
+          <p class="section-label mb-2">Mostre</p>
+          <h2 class="section-title">Una griglia da galleria, con le mostre ordinate dalla più recente.</h2>
         </div>
-        <p class="section-intro">L’immagine occupa la scena e il testo emerge come pannello informativo. La home assume un tono più museale e scenografico, mantenendo chiara la struttura richiesta.</p>
+        <p class="section-intro">L’immagine occupa la scena e il testo emerge come pannello informativo. In apertura vedi le prime {{ initial_exhibits_count }}, mentre le successive si aprono direttamente nella stessa pagina.</p>
       </div>
-      <div class="gallery-grid">
+      <div id="galleryExhibits" class="gallery-grid">
         {% for exhibit in exhibits %}
-          <article class="gallery-card{% if forloop.first %} gallery-card--wide{% endif %}">
-            <div class="gallery-card__media" style="background-image: url('{{ exhibit.image }}');"></div>
+          <article class="gallery-card{% if forloop.first %} gallery-card--wide{% endif %} preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+            <div class="gallery-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
             <div class="gallery-card__content content-panel">
               <div class="card-kicker">{{ exhibit.category }}</div>
               <h3 class="card-title">{{ exhibit.title }}</h3>
@@ -60,6 +60,13 @@
           </article>
         {% endfor %}
       </div>
+      {% if has_more_exhibits %}
+        <div class="preview-more-wrap">
+          <button class="btn-preview btn-preview--primary preview-more-button" type="button" data-show-more data-target="#galleryExhibits" data-label-more="Vedi altre {{ remaining_exhibits_count }} mostre" data-label-less="Mostra meno" aria-expanded="false">
+            Vedi altre {{ remaining_exhibits_count }} mostre
+          </button>
+        </div>
+      {% endif %}
     </div>
   </section>
 

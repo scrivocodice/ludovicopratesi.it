@@ -2,7 +2,9 @@
   <div class="modal fade" id="{{ exhibit.modal_id }}" tabindex="-1" aria-labelledby="{{ exhibit.modal_id }}Label" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content preview-modal">
-        <div class="preview-modal__image" style="background-image: url('{{ exhibit.image }}');"></div>
+        {% if exhibit.image_url %}
+          <div class="preview-modal__image" style="background-image: url('{{ exhibit.image_url }}');"></div>
+        {% endif %}
         <div class="modal-header">
           <div>
             <div class="card-kicker">{{ exhibit.category }}</div>
@@ -16,12 +18,18 @@
             <span>{{ exhibit.location }}</span>
             <span>{{ exhibit.period }}</span>
           </div>
-          <ul class="preview-modal__list">
-            {% for detail in exhibit.details %}
-              <li>{{ detail }}</li>
-            {% endfor %}
-          </ul>
-          <a class="card-link mt-4" href="{{ exhibit.source_url }}" target="_blank" rel="noreferrer">Apri la scheda sul sito attuale</a>
+          {% if exhibit.description_html %}
+            <div class="preview-modal__description mt-4">{{ exhibit.description_html|safe }}</div>
+          {% elif exhibit.details %}
+            <ul class="preview-modal__list">
+              {% for detail in exhibit.details %}
+                <li>{{ detail }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if exhibit.source_url %}
+            <a class="card-link mt-4" href="{{ exhibit.source_url }}" target="_blank" rel="noreferrer">Apri la scheda sul sito attuale</a>
+          {% endif %}
         </div>
       </div>
     </div>

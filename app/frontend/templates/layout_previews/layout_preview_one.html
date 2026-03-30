@@ -22,15 +22,15 @@
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="section-label mb-2">Mostre attive</p>
-          <h2 class="section-title">Blocchi grandi, leggibili e con approfondimento in modale.</h2>
+          <p class="section-label mb-2">Mostre</p>
+          <h2 class="section-title">Blocchi grandi, ordinati dalla più recente e con approfondimento in modale.</h2>
         </div>
-        <p class="section-intro">Questa soluzione usa card orizzontali con immagine protagonista e testo ordinato sul lato. Il click apre una modale Bootstrap, così la home resta l’unica pagina pubblica.</p>
+        <p class="section-intro">Questa soluzione usa card orizzontali con immagine protagonista e testo ordinato sul lato. In apertura mostriamo le prime {{ initial_exhibits_count }} e il resto si espande nella stessa pagina con “Vedi altre”.</p>
       </div>
-      <div class="editorial-grid">
+      <div id="editorialExhibits" class="editorial-grid">
         {% for exhibit in exhibits %}
-          <article class="editorial-card content-panel">
-            <div class="editorial-card__media" style="background-image: url('{{ exhibit.image }}');"></div>
+          <article class="editorial-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+            <div class="editorial-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
             <div class="editorial-card__content">
               <div class="card-kicker">{{ exhibit.category }}</div>
               <h3 class="card-title">{{ exhibit.title }}</h3>
@@ -46,6 +46,13 @@
           </article>
         {% endfor %}
       </div>
+      {% if has_more_exhibits %}
+        <div class="preview-more-wrap">
+          <button class="btn-preview btn-preview--primary preview-more-button" type="button" data-show-more data-target="#editorialExhibits" data-label-more="Vedi altre {{ remaining_exhibits_count }} mostre" data-label-less="Mostra meno" aria-expanded="false">
+            Vedi altre {{ remaining_exhibits_count }} mostre
+          </button>
+        </div>
+      {% endif %}
     </div>
   </section>
 

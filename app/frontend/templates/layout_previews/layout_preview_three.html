@@ -32,15 +32,15 @@
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="section-label mb-2">Mostre attive</p>
-          <h2 class="section-title">Card morbide e modulari, con molto spazio per il racconto.</h2>
+          <p class="section-label mb-2">Mostre</p>
+          <h2 class="section-title">Card morbide e modulari, ordinate dalla più recente.</h2>
         </div>
-        <p class="section-intro">La griglia mantiene il principio della homepage unica, ma con un tono più accogliente. Le card restano grandi e aprono una modale per i dettagli, come richiesto.</p>
+        <p class="section-intro">La griglia mantiene il principio della homepage unica, ma con un tono più accogliente. Le prime {{ initial_exhibits_count }} sono subito visibili, le altre si aprono al click su “Vedi altre”.</p>
       </div>
-      <div class="atelier-grid">
+      <div id="atelierExhibits" class="atelier-grid">
         {% for exhibit in exhibits %}
-          <article class="atelier-card content-panel">
-            <div class="atelier-card__media" style="background-image: url('{{ exhibit.image }}');"></div>
+          <article class="atelier-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+            <div class="atelier-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
             <div class="atelier-card__content">
               <div class="card-kicker">{{ exhibit.category }}</div>
               <h3 class="card-title">{{ exhibit.title }}</h3>
@@ -56,6 +56,13 @@
           </article>
         {% endfor %}
       </div>
+      {% if has_more_exhibits %}
+        <div class="preview-more-wrap">
+          <button class="btn-preview btn-preview--primary preview-more-button" type="button" data-show-more data-target="#atelierExhibits" data-label-more="Vedi altre {{ remaining_exhibits_count }} mostre" data-label-less="Mostra meno" aria-expanded="false">
+            Vedi altre {{ remaining_exhibits_count }} mostre
+          </button>
+        </div>
+      {% endif %}
     </div>
   </section>
 

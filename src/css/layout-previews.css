@@ -15,6 +15,10 @@ body.preview-body {
   overflow-x: hidden;
 }
 
+.preview-exhibit.is-hidden {
+  display: none;
+}
+
 .section-shell {
   padding: 5rem 0;
   scroll-margin-top: 96px;
@@ -290,6 +294,12 @@ body.preview-body {
   background-position: center center;
 }
 
+.preview-media-fallback {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent),
+    linear-gradient(120deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.12));
+}
+
 .editorial-card__content,
 .gallery-card__content,
 .atelier-card__content {
@@ -491,6 +501,16 @@ body.preview-body {
   color: var(--page-text, #171717);
 }
 
+.preview-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.preview-more-button {
+  min-width: 16rem;
+}
+
 .preview-footer {
   padding: 1.8rem 0 2.4rem;
   background: var(--footer-bg, #111111);
@@ -563,6 +583,14 @@ body.preview-body {
 
 .preview-modal__list li + li {
   margin-top: 0.65rem;
+}
+
+.preview-modal__description {
+  color: var(--modal-muted, rgba(255, 255, 255, 0.72));
+}
+
+.preview-modal__description p:last-child {
+  margin-bottom: 0;
 }
 
 .editorial-hero-card {

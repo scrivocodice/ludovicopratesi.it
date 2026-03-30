@@ -56,5 +56,34 @@
   {% include "layout_previews/partials/exhibit_modals.html" %}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('[data-show-more]').forEach(function (button) {
+      var targetSelector = button.getAttribute('data-target');
+      var target = document.querySelector(targetSelector);
+      if (!target) {
+        return;
+      }
+
+      var hiddenItems = Array.prototype.slice.call(
+        target.querySelectorAll('.preview-exhibit.is-hidden')
+      );
+
+      if (!hiddenItems.length) {
+        button.remove();
+        return;
+      }
+
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+
+        hiddenItems.forEach(function (item) {
+          item.classList.toggle('is-hidden', expanded);
+        });
+
+        button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        button.textContent = expanded ? button.dataset.labelMore : button.dataset.labelLess;
+      });
+    });
+  </script>
 </body>
 </html>
