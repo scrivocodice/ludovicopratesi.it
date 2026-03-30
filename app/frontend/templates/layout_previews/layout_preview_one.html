@@ -1,10 +1,8 @@
 {% extends "layout_previews/layout_preview_base.html" %}
-{% load staticfiles %}
-
 {% block body_class %}theme-editorial{% endblock %}
 
 {% block content %}
-  <section id="hero" class="hero-section" style="background-image: url('{% static hero_image %}');">
+  <section id="hero" class="hero-section" style="background-image: url('{{ hero_image }}');">
     <div class="container hero-content">
       <div class="hero-panel editorial-hero-card text-white">
         <div class="hero-kicker">{{ hero_kicker }}</div>
@@ -32,7 +30,7 @@
       <div class="editorial-grid">
         {% for exhibit in exhibits %}
           <article class="editorial-card content-panel">
-            <div class="editorial-card__media" style="background-image: url('{% static exhibit.image %}');"></div>
+            <div class="editorial-card__media" style="background-image: url('{{ exhibit.image }}');"></div>
             <div class="editorial-card__content">
               <div class="card-kicker">{{ exhibit.category }}</div>
               <h3 class="card-title">{{ exhibit.title }}</h3>

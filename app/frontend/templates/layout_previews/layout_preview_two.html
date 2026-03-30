@@ -1,10 +1,8 @@
 {% extends "layout_previews/layout_preview_base.html" %}
-{% load staticfiles %}
-
 {% block body_class %}theme-gallery{% endblock %}
 
 {% block content %}
-  <section id="hero" class="hero-section" style="background-image: url('{% static hero_image %}');">
+  <section id="hero" class="hero-section" style="background-image: url('{{ hero_image }}');">
     <div class="container hero-content">
       <div class="gallery-hero-copy text-white">
         <div class="hero-kicker">{{ hero_kicker }}</div>
@@ -46,7 +44,7 @@
       <div class="gallery-grid">
         {% for exhibit in exhibits %}
           <article class="gallery-card{% if forloop.first %} gallery-card--wide{% endif %}">
-            <div class="gallery-card__media" style="background-image: url('{% static exhibit.image %}');"></div>
+            <div class="gallery-card__media" style="background-image: url('{{ exhibit.image }}');"></div>
             <div class="gallery-card__content content-panel">
               <div class="card-kicker">{{ exhibit.category }}</div>
               <h3 class="card-title">{{ exhibit.title }}</h3>
