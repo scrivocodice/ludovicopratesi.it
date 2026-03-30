@@ -1,0 +1,114 @@
+{% extends "layout_previews/layout_preview_base.html" %}
+{% block body_class %}theme-editorial{% endblock %}
+
+{% block content %}
+  <section id="hero" class="hero-section" style="background-image: url('{{ hero_image }}');">
+    <div class="container hero-content">
+      <div class="hero-panel editorial-hero-card text-white">
+        <div class="hero-kicker">{{ hero_kicker }}</div>
+        <p class="section-label text-white mb-3">{{ draft_name }} · {{ draft_style }}</p>
+        <h1 class="hero-title mb-4">{{ hero_title }}</h1>
+        <p class="hero-text mb-3">{{ hero_text }}</p>
+        <p class="hero-note mb-0">{{ hero_note }}</p>
+        <div class="hero-actions">
+          <a class="btn-preview btn-preview--primary" href="#mostre">Scopri le mostre</a>
+          <a class="btn-preview btn-preview--secondary" href="#contatti">Vai ai contatti</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mostre" class="section-shell">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-label mb-2">Mostre</p>
+          <h2 class="section-title">Blocchi grandi, ordinati dalla più recente e con approfondimento in modale.</h2>
+        </div>
+        <p class="section-intro">Questa soluzione usa card orizzontali con immagine protagonista e testo ordinato sul lato. In apertura mostriamo le prime {{ initial_exhibits_count }} e il resto si espande nella stessa pagina con “Vedi altre”.</p>
+      </div>
+      <div id="editorialExhibits" class="editorial-grid">
+        {% for exhibit in exhibits %}
+          <article class="editorial-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+            <div class="editorial-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
+            <div class="editorial-card__content">
+              <div class="card-kicker">{{ exhibit.category }}</div>
+              <h3 class="card-title">{{ exhibit.title }}</h3>
+              <p class="card-summary">{{ exhibit.summary }}</p>
+              <div class="card-meta">
+                <span>{{ exhibit.location }}</span>
+                <span>{{ exhibit.period }}</span>
+              </div>
+              <button class="card-link" type="button" data-bs-toggle="modal" data-bs-target="#{{ exhibit.modal_id }}">
+                Apri dettagli mostra
+              </button>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+      {% if has_more_exhibits %}
+        <div class="preview-more-wrap">
+          <button class="btn-preview btn-preview--primary preview-more-button" type="button" data-show-more data-target="#editorialExhibits" data-label-more="Vedi altre {{ remaining_exhibits_count }} mostre" data-label-less="Mostra meno" aria-expanded="false">
+            Vedi altre {{ remaining_exhibits_count }} mostre
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section id="profilo" class="section-shell pt-0">
+    <div class="container">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="content-panel h-100">
+            <p class="section-label mb-2">{{ about_label }}</p>
+            <h2 class="section-title mb-4">{{ about_title }}</h2>
+            <p class="section-intro mb-0">{{ about_intro }}</p>
+            <div class="row g-3 mt-4">
+              {% for point in about_points %}
+                <div class="col-md-4">
+                  <div class="point-card">
+                    <h3>{{ point.title }}</h3>
+                    <p>{{ point.text }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="quote-panel">
+            <blockquote>{{ about_quote }}</blockquote>
+            <footer>Direzione consigliata se vuoi un sito sobrio, elegante e molto leggibile.</footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="section-shell pt-0">
+    <div class="container">
+      <div class="contact-panel">
+        <div class="contact-panel__inner">
+          <p class="section-label mb-2">{{ contacts_title }}</p>
+          <h2 class="section-title mb-3">Email e indirizzo in chiusura, senza form.</h2>
+          <p class="section-intro mb-4">{{ contacts_intro }}</p>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <span class="contact-label">Email</span>
+              <a class="contact-value" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+            </div>
+            <div class="col-lg-6">
+              <span class="contact-label">Indirizzo</span>
+              <p class="contact-address mt-2">
+                {% for line in contacts.address_lines %}
+                  {{ line }}{% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

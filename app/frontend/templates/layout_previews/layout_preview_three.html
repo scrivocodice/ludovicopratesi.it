@@ -1,0 +1,120 @@
+{% extends "layout_previews/layout_preview_base.html" %}
+{% block body_class %}theme-atelier{% endblock %}
+
+{% block content %}
+  <section id="hero" class="hero-section" style="background-image: url('{{ hero_image }}');">
+    <div class="container hero-content">
+      <div class="row justify-content-between align-items-end g-4">
+        <div class="col-lg-7">
+          <div class="atelier-hero-card hero-panel">
+            <div class="hero-kicker">{{ hero_kicker }}</div>
+            <p class="section-label mb-3">{{ draft_name }} · {{ draft_style }}</p>
+            <h1 class="hero-title mb-4">{{ hero_title }}</h1>
+            <p class="hero-text mb-3">{{ hero_text }}</p>
+            <p class="hero-note mb-0">{{ hero_note }}</p>
+            <div class="hero-actions">
+              <a class="btn-preview btn-preview--primary" href="#mostre">Vai alle mostre</a>
+              <a class="btn-preview btn-preview--secondary" href="#contatti">Contatti</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="atelier-note">
+            <p class="section-label mb-2">Perché questa bozza</p>
+            <p class="mb-0">Un’impostazione più calda e personale, adatta a raccontare un profilo curatoriale con maggiore prossimità senza perdere ordine e chiarezza.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mostre" class="section-shell">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-label mb-2">Mostre</p>
+          <h2 class="section-title">Card morbide e modulari, ordinate dalla più recente.</h2>
+        </div>
+        <p class="section-intro">La griglia mantiene il principio della homepage unica, ma con un tono più accogliente. Le prime {{ initial_exhibits_count }} sono subito visibili, le altre si aprono al click su “Vedi altre”.</p>
+      </div>
+      <div id="atelierExhibits" class="atelier-grid">
+        {% for exhibit in exhibits %}
+          <article class="atelier-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+            <div class="atelier-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
+            <div class="atelier-card__content">
+              <div class="card-kicker">{{ exhibit.category }}</div>
+              <h3 class="card-title">{{ exhibit.title }}</h3>
+              <p class="card-summary">{{ exhibit.summary }}</p>
+              <div class="card-meta">
+                <span>{{ exhibit.location }}</span>
+                <span>{{ exhibit.period }}</span>
+              </div>
+              <button class="card-link" type="button" data-bs-toggle="modal" data-bs-target="#{{ exhibit.modal_id }}">
+                Apri la scheda
+              </button>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+      {% if has_more_exhibits %}
+        <div class="preview-more-wrap">
+          <button class="btn-preview btn-preview--primary preview-more-button" type="button" data-show-more data-target="#atelierExhibits" data-label-more="Vedi altre {{ remaining_exhibits_count }} mostre" data-label-less="Mostra meno" aria-expanded="false">
+            Vedi altre {{ remaining_exhibits_count }} mostre
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section id="profilo" class="section-shell pt-0">
+    <div class="container">
+      <div class="atelier-profile-grid">
+        <div class="atelier-profile-card">
+          <p class="section-label mb-2">{{ about_label }}</p>
+          <h2 class="section-title mb-4">{{ about_title }}</h2>
+          <p class="section-intro mb-0">{{ about_intro }}</p>
+        </div>
+        <div class="quote-panel">
+          <blockquote>{{ about_quote }}</blockquote>
+          <footer>Adatta a un posizionamento più personale e contemporaneo.</footer>
+        </div>
+      </div>
+      <div class="row g-3 mt-3">
+        {% for point in about_points %}
+          <div class="col-md-4">
+            <div class="point-card">
+              <h3>{{ point.title }}</h3>
+              <p>{{ point.text }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti" class="section-shell pt-0">
+    <div class="container">
+      <div class="contact-panel">
+        <div class="contact-panel__inner">
+          <p class="section-label mb-2">{{ contacts_title }}</p>
+          <h2 class="section-title mb-3">Informazioni immediate, in chiusura di pagina.</h2>
+          <p class="section-intro mb-4">{{ contacts_intro }}</p>
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <span class="contact-label">Email</span>
+              <a class="contact-value" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+            </div>
+            <div class="col-lg-7">
+              <span class="contact-label">Indirizzo</span>
+              <p class="contact-address mt-2">
+                {% for line in contacts.address_lines %}
+                  {{ line }}{% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

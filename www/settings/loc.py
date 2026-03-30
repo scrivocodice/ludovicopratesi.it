@@ -5,10 +5,8 @@ TEMPLATE_DEBUG = True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ludovicopratesi_db',
-        'USER': 'xm3ron',
-        'PASSWORD': 'thesis',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3'),
     }
 }
 
