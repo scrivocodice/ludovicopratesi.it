@@ -47,14 +47,34 @@ body.preview-body {
 .preview-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0;
+  gap: 0.85rem;
   text-decoration: none;
 }
 
 .preview-brand img {
-  width: 150px;
+  width: 132px;
   height: auto;
   display: block;
+}
+
+.preview-brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.preview-brand-copy span {
+  color: var(--brand-text, #ffffff);
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.preview-brand-copy small {
+  color: var(--brand-muted, rgba(255, 255, 255, 0.72));
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .preview-navbar .nav-link {
@@ -498,6 +518,32 @@ body.preview-body {
   border-bottom-color: var(--modal-border, rgba(255, 255, 255, 0.08));
 }
 
+.preview-modal .modal-title {
+  color: var(--modal-text, #f5f1ea);
+}
+
+.preview-modal .card-kicker {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--modal-border, rgba(255, 255, 255, 0.08));
+  color: var(--modal-text, #f5f1ea);
+}
+
+.preview-modal .card-summary {
+  color: var(--modal-text, #f5f1ea);
+}
+
+.preview-modal .card-meta {
+  color: var(--modal-muted, rgba(255, 255, 255, 0.72));
+}
+
+.preview-modal .card-link {
+  color: var(--modal-text, #f5f1ea);
+}
+
+.preview-modal .card-link:hover {
+  color: var(--accent, #c76c3a);
+}
+
 .preview-modal__image {
   min-height: 18rem;
   background-size: cover;
@@ -716,6 +762,10 @@ body.preview-body {
 @media (max-width: 767.98px) {
   .preview-brand img {
     width: 108px;
+  }
+
+  .preview-brand-copy {
+    display: none;
   }
 
   .section-shell {
