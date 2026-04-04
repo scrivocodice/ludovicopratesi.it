@@ -32,29 +32,17 @@ class Exhibit(models.Model):
         blank=True,
         default='',
     )
-    excerpt_it = models.CharField(
-        _('excerpt_it'),
+    excerpt = models.CharField(
+        _('excerpt'),
         help_text='breve descrizione della mostra',
         max_length=255,
         null=True,
         blank=True,
         default='',
     )
-    description_it = models.TextField(
-        _('description_it'),
+    description = models.TextField(
+        _('description'),
         help_text='descrizione completa della mostra',
-    )
-    excerpt_en = models.CharField(
-        _('excerpt_en'),
-        help_text='breve descrizione della mostra(inglese)',
-        max_length=255,
-        null=True,
-        blank=True,
-        default='',
-    )
-    description_en = models.TextField(
-        _('description_en'),
-        help_text='descrizione completa della mostra(inglese)',
     )
     address = models.CharField(
         _('address'),
@@ -85,6 +73,7 @@ class Exhibit(models.Model):
 
     class Meta:
         db_table = 'exhibit'
+        ordering = ['-ended_at', '-begun_at', '-id']
         verbose_name = _('exhibit')
         verbose_name_plural = _('exhibits')
 

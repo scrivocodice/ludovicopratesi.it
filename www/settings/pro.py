@@ -60,15 +60,20 @@ EMAIL_USE_SSL = True
 
 # Logging
 
+PROD_LOG_FILE = '/srv/logs/ludovicopratesi.django.error.log'
+PROD_LOG_DIR = os.path.dirname(PROD_LOG_FILE)
+PROD_LOG_HANDLER = {
+    'level': 'ERROR',
+    'class': 'logging.FileHandler' if os.path.isdir(PROD_LOG_DIR) else 'logging.StreamHandler',
+}
+if os.path.isdir(PROD_LOG_DIR):
+    PROD_LOG_HANDLER['filename'] = PROD_LOG_FILE
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': '/srv/logs/ludovicopratesi.django.error.log',
-        },
+        'file': PROD_LOG_HANDLER,
     },
     'loggers': {
         'django': {

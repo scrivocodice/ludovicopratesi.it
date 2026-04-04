@@ -14,7 +14,6 @@ if APP_PATH not in sys.path:
 LANGUAGE_CODE = 'it'
 LANGUAGES = (
     ('it', 'italiano'),
-    ('en', 'english'),
 )
 USE_I18N = True
 

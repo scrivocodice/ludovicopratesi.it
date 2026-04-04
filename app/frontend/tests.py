@@ -13,10 +13,8 @@ class HomepageTest(TestCase):
             title='Mostra test',
             slug='mostra-test',
             authors='Autore Test',
-            excerpt_it='Estratto',
-            description_it='<p>Descrizione</p>',
-            excerpt_en='Excerpt',
-            description_en='<p>Description</p>',
+            excerpt='Estratto',
+            description='<p>Descrizione</p>',
             address='Roma',
             begun_at='2026-01-10',
             ended_at='2026-01-12',
@@ -24,6 +22,39 @@ class HomepageTest(TestCase):
         response = self.client.get('/')
         self.assertContains(response, 'Mostra test')
         self.assertContains(response, 'Autore Test')
+
+    def test_homepage_orders_exhibits_descending(self):
+        Exhibit.objects.create(
+            title='Mostra meno recente',
+            slug='mostra-meno-recente',
+            authors='Autore 1',
+            excerpt='Prima',
+            description='<p>Prima</p>',
+            address='Roma',
+            begun_at='2025-01-10',
+            ended_at='2025-01-12',
+        )
+        Exhibit.objects.create(
+            title='Mostra piu recente',
+            slug='mostra-piu-recente',
+            authors='Autore 2',
+            excerpt='Seconda',
+            description='<p>Seconda</p>',
+            address='Roma',
+            begun_at='2026-01-10',
+            ended_at='2026-01-12',
+        )
+
+        response = self.client.get('/')
+        self.assertContains(
+            response,
+            'Mostra piu recente',
+            html=False,
+        )
+        self.assertLess(
+            response.content.find(b'Mostra piu recente'),
+            response.content.find(b'Mostra meno recente'),
+        )
 
 
 class AdminLoginTest(TestCase):
