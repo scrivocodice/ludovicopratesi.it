@@ -1,14 +1,111 @@
 :root {
   scroll-behavior: smooth;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(calc(100% - 2rem), 1180px);
+  margin: 0 auto;
+}
+
+.row {
+  --grid-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.row > * {
+  min-width: 0;
+  grid-column: span 12;
+}
+
+.g-3 {
+  --grid-gap: 1rem;
+}
+
+.g-4 {
+  --grid-gap: 1.5rem;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.fs-2 {
+  font-size: clamp(2rem, 3vw, 2.7rem);
 }
 
 body.preview-body {
   position: relative;
   font-family: var(--font-body, "Manrope", sans-serif);
+  line-height: 1.5;
   color: var(--page-text, #171717);
   background:
     radial-gradient(circle at top left, var(--page-glow, rgba(255, 255, 255, 0.8)), transparent 34%),
     var(--page-bg, #f6f1ea);
+}
+
+body.preview-modal-open {
+  overflow: hidden;
 }
 
 .preview-shell {
@@ -29,16 +126,36 @@ body.preview-body {
   background: var(--nav-bg, rgba(16, 18, 22, 0.8));
   border-bottom: 1px solid var(--nav-border, rgba(255, 255, 255, 0.08));
   backdrop-filter: blur(18px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.preview-navbar .navbar-toggler {
-  border: 0;
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-nav__toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--nav-border, rgba(255, 255, 255, 0.08));
+  border-radius: 999px;
+  background: transparent;
   box-shadow: none;
+  cursor: pointer;
 }
 
-.preview-navbar .navbar-toggler-icon {
+.navbar-toggler-icon {
   width: 1.5rem;
   height: 1.1rem;
+  display: inline-block;
   background-image:
     linear-gradient(var(--nav-link, rgba(255, 255, 255, 0.82)), var(--nav-link, rgba(255, 255, 255, 0.82))),
     linear-gradient(var(--nav-link, rgba(255, 255, 255, 0.82)), var(--nav-link, rgba(255, 255, 255, 0.82))),
@@ -81,13 +198,29 @@ body.preview-body {
   text-transform: uppercase;
 }
 
+.site-nav__menu {
+  display: flex;
+  align-items: center;
+}
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .preview-navbar .nav-link {
+  display: inline-flex;
   padding: 0.4rem 0.85rem;
   color: var(--nav-link, rgba(255, 255, 255, 0.82));
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .preview-navbar .nav-link:hover,
@@ -355,6 +488,8 @@ body.preview-body {
   background: transparent;
   border: 0;
   padding: 0;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .card-link:hover {
@@ -517,11 +652,52 @@ body.preview-body {
   color: var(--footer-text, rgba(255, 255, 255, 0.78));
 }
 
+.footer-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
 .preview-footer p {
   margin: 0;
 }
 
+.footer-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(16, 12, 10, 0.72);
+  z-index: 200;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-dialog {
+  width: min(100%, 940px);
+  max-height: calc(100vh - 3rem);
+}
+
 .modal-content.preview-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
   border: 0;
   border-radius: 1.8rem;
   background: var(--modal-bg, #171717);
@@ -535,7 +711,15 @@ body.preview-body {
 }
 
 .preview-modal .modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
   border-bottom-color: var(--modal-border, rgba(255, 255, 255, 0.08));
+}
+
+.preview-modal .modal-body {
+  overflow: auto;
 }
 
 .preview-modal .modal-title {
@@ -570,9 +754,24 @@ body.preview-body {
   background-position: center center;
 }
 
-.preview-modal .btn-close {
-  filter: invert(1);
-  opacity: 0.9;
+.btn-close {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--modal-border, rgba(255, 255, 255, 0.08));
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.btn-close::before {
+  content: "×";
+  font-size: 1.7rem;
+  line-height: 1;
 }
 
 .preview-modal__list {
@@ -691,8 +890,8 @@ body.preview-body {
   --modal-border: rgba(255, 255, 255, 0.08);
   --modal-muted: rgba(255, 255, 255, 0.72);
   --contact-glow: rgba(164, 77, 42, 0.18);
-  --font-display: "Cormorant Garamond", serif;
-  --font-body: "Manrope", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .theme-gallery {
@@ -726,8 +925,8 @@ body.preview-body {
   --modal-border: rgba(255, 255, 255, 0.08);
   --modal-muted: rgba(237, 242, 255, 0.72);
   --contact-glow: rgba(98, 182, 255, 0.24);
-  --font-display: "Instrument Serif", serif;
-  --font-body: "Space Grotesk", sans-serif;
+  --font-display: "Baskerville", "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .theme-atelier {
@@ -760,19 +959,47 @@ body.preview-body {
   --modal-border: rgba(255, 255, 255, 0.08);
   --modal-muted: rgba(247, 239, 231, 0.72);
   --contact-glow: rgba(179, 95, 57, 0.22);
-  --font-display: "Fraunces", serif;
-  --font-body: "Manrope", sans-serif;
+  --font-display: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @media (max-width: 991.98px) {
-  .preview-switcher {
-    padding: 1rem 0 0;
-    justify-content: flex-start;
+  .site-nav__toggle {
+    display: inline-flex;
+  }
+
+  .site-nav__menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 1rem;
+    right: 1rem;
+    display: none;
+    padding: 1rem;
+    border: 1px solid var(--nav-border, rgba(255, 255, 255, 0.08));
+    border-radius: 1.25rem;
+    background: var(--nav-bg, rgba(16, 18, 22, 0.94));
+    box-shadow: 0 18px 50px rgba(12, 10, 8, 0.16);
+  }
+
+  .site-nav__menu.is-open {
+    display: block;
+  }
+
+  .site-nav__links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 
   .hero-section {
     min-height: auto;
     padding-top: 8rem;
+  }
+
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7 {
+    grid-column: span 12;
   }
 
   .editorial-card,
@@ -784,6 +1011,26 @@ body.preview-body {
   .gallery-card,
   .gallery-card--wide {
     grid-column: span 12;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-5 {
+    grid-column: span 5;
+  }
+
+  .col-lg-6 {
+    grid-column: span 6;
+  }
+
+  .col-lg-7 {
+    grid-column: span 7;
   }
 }
 
@@ -817,5 +1064,14 @@ body.preview-body {
 
   .contact-value {
     font-size: 1.15rem;
+  }
+
+  .modal {
+    padding: 0.75rem;
+  }
+
+  .preview-modal .modal-header,
+  .preview-modal .modal-body {
+    padding: 1.25rem;
   }
 }

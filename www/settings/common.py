@@ -114,3 +114,5 @@ TEMPLATES = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+GOOGLE_ANALYTICS_MEASUREMENT_ID = ''

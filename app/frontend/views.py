@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.utils.html import strip_tags
 
@@ -120,6 +121,7 @@ def _build_homepage_context(request):
         'nav_items': PREVIEW_NAV_ITEMS,
         'exhibits': exhibit_items,
         'contacts': PREVIEW_CONTACTS,
+        'google_analytics_measurement_id': getattr(settings, 'GOOGLE_ANALYTICS_MEASUREMENT_ID', ''),
         'initial_exhibits_count': INITIAL_EXHIBITS_COUNT,
         'has_more_exhibits': len(exhibit_items) > INITIAL_EXHIBITS_COUNT,
         'remaining_exhibits_count': max(len(exhibit_items) - INITIAL_EXHIBITS_COUNT, 0),

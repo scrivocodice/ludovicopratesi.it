@@ -58,6 +58,8 @@ EMAIL_HOST_USER = 'info@ludovicopratesi.it'
 EMAIL_HOST_PASSWORD = 'LudPra1'
 EMAIL_USE_SSL = True
 
+GOOGLE_ANALYTICS_MEASUREMENT_ID = 'G-3R8THL30PZ'
+
 # Logging
 
 PROD_LOG_FILE = '/srv/logs/ludovicopratesi.django.error.log'
