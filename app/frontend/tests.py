@@ -1,40 +1,32 @@
 from django.test import TestCase
+
 from frontend.models import Exhibit
 
-class WebRouteTest(TestCase):
-    routes = ()
 
-    def test_successful(self):
-        """
-        Tests route successful
-        """
-        for route in self.routes:
-            response = self.client.get(route)
-            self.assertEqual(200, response.status_code, "route %s NOT OK" % route)
+class HomepageTest(TestCase):
+    def test_homepage_is_available(self):
+        response = self.client.get('/')
+        self.assertEqual(200, response.status_code)
 
-class HomepageTest(WebRouteTest):
-    routes = ("/it/", "/en/")
-
-class ExhibitListTest(WebRouteTest):
-    routes = ("/en/exhibits/", "/it/mostre/")
-
-class ExhibitShowTest(WebRouteTest):
-    routes = ("/en/exhibit/prova/", "/it/mostra/prova/",)
-
-    def test_successful(self):
+    def test_homepage_renders_exhibit_from_database(self):
         Exhibit.objects.create(
-            title = "prova",
-            slug = "prova",
-            begun_at = "2013-10-10",
-            ended_at = "2013-10-12",
+            title='Mostra test',
+            slug='mostra-test',
+            authors='Autore Test',
+            excerpt_it='Estratto',
+            description_it='<p>Descrizione</p>',
+            excerpt_en='Excerpt',
+            description_en='<p>Description</p>',
+            address='Roma',
+            begun_at='2026-01-10',
+            ended_at='2026-01-12',
         )
-        super(ExhibitShowTest, self).test_successful()
+        response = self.client.get('/')
+        self.assertContains(response, 'Mostra test')
+        self.assertContains(response, 'Autore Test')
 
-class ResumeTest(WebRouteTest):
-    routes = ("/en/resume/", "/it/curriculum-vitae/")
 
-class ContactsTest(WebRouteTest):
-    routes = ("/en/contacts/", "/it/contatti/", \
-        "/en/contacts/successful-message-sent/",
-        "/it/contatti/messaggio-inviato-con-successo/",
-    )
+class AdminLoginTest(TestCase):
+    def test_admin_login_is_available(self):
+        response = self.client.get('/admin/login/')
+        self.assertEqual(200, response.status_code)

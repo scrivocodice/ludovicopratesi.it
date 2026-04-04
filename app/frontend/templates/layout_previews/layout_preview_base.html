@@ -1,11 +1,11 @@
-{% load staticfiles %}
+{% load static %}
 
 <!doctype html>
 <html lang="it">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page_title }} | Ludovico Pratesi</title>
+  <title>{{ page_title }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -32,12 +32,6 @@
             </li>
           {% endfor %}
         </ul>
-        <div class="preview-switcher ms-lg-3">
-          <span class="preview-switcher__label">Bozze</span>
-          <a class="preview-switcher__link{% if current_preview == 'one' %} is-active{% endif %}" href="{% url 'layout_preview_one' %}">1</a>
-          <a class="preview-switcher__link{% if current_preview == 'two' %} is-active{% endif %}" href="{% url 'layout_preview_two' %}">2</a>
-          <a class="preview-switcher__link{% if current_preview == 'three' %} is-active{% endif %}" href="{% url 'layout_preview_three' %}">3</a>
-        </div>
       </div>
     </div>
   </nav>
@@ -48,8 +42,8 @@
 
   <footer class="preview-footer">
     <div class="container d-flex flex-column flex-lg-row justify-content-between gap-2">
-      <p>{{ draft_name }} · {{ draft_style }}</p>
-      <p>Mockup statico single-page per revisione layout.</p>
+      <p>Ludovico Pratesi</p>
+      <p>Curatore e critico d'arte contemporanea.</p>
     </div>
   </footer>
 

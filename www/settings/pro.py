@@ -53,13 +53,10 @@ STATIC_URL = '/static/'
 
 # email settings
 EMAIL_HOST = 'mail2.mclink.it'
-EMAIL_PORT = '465'
+EMAIL_PORT = 465
 EMAIL_HOST_USER = 'info@ludovicopratesi.it'
 EMAIL_HOST_PASSWORD = 'LudPra1'
 EMAIL_USE_SSL = True
-
-# django_compressor
-COMPRESS_OFFLINE = True
 
 # Logging
 
