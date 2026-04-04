@@ -56,6 +56,23 @@ class HomepageTest(TestCase):
             response.content.find(b'Mostra meno recente'),
         )
 
+    def test_homepage_exhibit_card_opens_modal_from_full_row(self):
+        Exhibit.objects.create(
+            title='Mostra clickabile',
+            slug='card-click',
+            authors='Autore Click',
+            excerpt='Estratto',
+            description='<p>Descrizione</p>',
+            address='Roma',
+            begun_at='2026-01-10',
+            ended_at='2026-01-12',
+        )
+
+        response = self.client.get('/')
+        self.assertContains(response, 'data-modal-open="#mostra-card-click"', count=1)
+        self.assertContains(response, 'role="button"', count=1)
+        self.assertContains(response, 'aria-controls="mostra-card-click"', count=1)
+
 
 class AdminLoginTest(TestCase):
     def test_admin_login_is_available(self):

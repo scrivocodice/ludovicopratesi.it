@@ -133,6 +133,17 @@
       trigger.addEventListener('click', function () {
         openModal(document.querySelector(trigger.getAttribute('data-modal-open')));
       });
+
+      if (trigger.getAttribute('role') === 'button') {
+        trigger.addEventListener('keydown', function (event) {
+          if (event.key !== 'Enter' && event.key !== ' ') {
+            return;
+          }
+
+          event.preventDefault();
+          openModal(document.querySelector(trigger.getAttribute('data-modal-open')));
+        });
+      }
     });
 
     document.querySelectorAll('[data-modal-close]').forEach(function (trigger) {

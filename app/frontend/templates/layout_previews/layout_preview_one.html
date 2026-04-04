@@ -28,7 +28,7 @@
       </div>
       <div id="editorialExhibits" class="editorial-grid">
         {% for exhibit in exhibits %}
-          <article class="editorial-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+          <article class="editorial-card editorial-card--interactive content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}" data-modal-open="#{{ exhibit.modal_id }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="{{ exhibit.modal_id }}" aria-label="Apri i dettagli della mostra {{ exhibit.title }}">
             <div class="editorial-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
             <div class="editorial-card__content">
               <div class="card-kicker">{{ exhibit.category }}</div>
@@ -38,9 +38,9 @@
                 <span>{{ exhibit.location }}</span>
                 <span>{{ exhibit.period }}</span>
               </div>
-              <button class="card-link" type="button" data-modal-open="#{{ exhibit.modal_id }}">
+              <span class="card-link card-link--hint" aria-hidden="true">
                 Apri dettagli mostra
-              </button>
+              </span>
             </div>
           </article>
         {% endfor %}

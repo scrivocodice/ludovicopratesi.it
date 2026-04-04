@@ -26,10 +26,10 @@ HOME_PAGE = {
     'page_title': 'Ludovico Pratesi',
     'template_name': 'layout_previews/layout_preview_one.html',
     'hero_image': 'https://media.ludovicopratesi.it/thumbs/items/1b/f0/7a4deafc92387c03629cea08c419.jpg.637x388_q50_crop_smart_upscale.jpg',
-    'hero_kicker': 'Curatore e critico d’arte',
-    'hero_title': 'Mostre, profilo e contatti in una sola homepage.',
-    'hero_text': 'Il sito raccoglie in una pagina unica il lavoro curatoriale, la traiettoria critica e una selezione delle mostre piu recenti, mantenendo una lettura chiara e diretta.',
-    'hero_note': 'Le mostre restano al centro della navigazione, con profilo e riferimenti professionali integrati nello stesso racconto.',
+    'hero_kicker': 'Ludovico Pratesi',
+    'hero_title': 'Curatore e critico d’arte.',
+    'hero_text': 'Professore di Didattica dell’arte all’Università IULM di Milano.',
+    'hero_note': 'Direttore artistico di Spazio Taverna e critico del quotidiano La Repubblica.',
     'about_label': 'Profilo',
     'about_title': 'Una pratica che tiene insieme curatela, critica e didattica.',
     'about_intro': 'Ludovico Pratesi e curatore e critico d’arte, docente allo IULM di Milano, direttore artistico di Spazio Taverna e voce storica del contemporaneo su La Repubblica.',
@@ -57,6 +57,8 @@ def _format_preview_date(value):
     if value is None:
         return ''
     return value.strftime('%d.%m.%Y')
+
+
 def _get_exhibit_text(exhibit, excerpt=False):
     return exhibit.excerpt if excerpt else exhibit.description
 

@@ -371,11 +371,33 @@ body.preview-modal-open {
   overflow: hidden;
   border-radius: 1.8rem;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.78fr);
+  align-items: center;
+}
+
+.editorial-card--interactive {
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.editorial-card--interactive:hover,
+.editorial-card--interactive:focus-visible {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(164, 77, 42, 0.22);
+  box-shadow: 0 36px 90px rgba(44, 31, 23, 0.18);
+}
+
+.editorial-card--interactive:focus-visible {
+  outline: 2px solid rgba(164, 77, 42, 0.28);
+  outline-offset: 4px;
 }
 
 .editorial-card__media {
-  min-height: 20rem;
+  min-height: 0;
+  aspect-ratio: 664 / 336;
   background-size: cover;
   background-position: center center;
 }
@@ -387,7 +409,7 @@ body.preview-modal-open {
 }
 
 .editorial-card__content {
-  padding: 2rem;
+  padding: 1.65rem 1.85rem;
 }
 
 .card-kicker {
@@ -406,20 +428,24 @@ body.preview-modal-open {
 .card-title {
   margin-bottom: 0.85rem;
   font-family: var(--font-display, "Cormorant Garamond", serif);
-  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
   line-height: 0.98;
 }
 
 .card-summary {
   color: var(--muted, rgba(0, 0, 0, 0.65));
   font-size: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 
 .card-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1rem;
-  margin: 1.2rem 0 1.5rem;
+  margin: 1rem 0 1.25rem;
   color: var(--meta-text, rgba(0, 0, 0, 0.68));
   font-size: 0.78rem;
   font-weight: 700;
@@ -445,6 +471,11 @@ body.preview-modal-open {
 
 .card-link:hover {
   color: var(--accent, #c76c3a);
+}
+
+.card-link--hint::after {
+  content: "↗";
+  font-size: 1rem;
 }
 
 .content-panel {
