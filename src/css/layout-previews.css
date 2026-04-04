@@ -172,12 +172,6 @@ body.preview-modal-open {
   text-decoration: none;
 }
 
-.preview-brand img {
-  width: 132px;
-  height: auto;
-  display: block;
-}
-
 .preview-brand-copy {
   display: flex;
   flex-direction: column;
@@ -226,41 +220,6 @@ body.preview-modal-open {
 .preview-navbar .nav-link:hover,
 .preview-navbar .nav-link.active {
   color: var(--accent, #c76c3a);
-}
-
-.preview-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding-left: 1rem;
-}
-
-.preview-switcher__label {
-  color: var(--switcher-label, rgba(255, 255, 255, 0.55));
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.preview-switcher__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.15rem;
-  height: 2.15rem;
-  border-radius: 999px;
-  border: 1px solid var(--switcher-border, rgba(255, 255, 255, 0.18));
-  color: var(--switcher-text, rgba(255, 255, 255, 0.82));
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.preview-switcher__link:hover,
-.preview-switcher__link.is-active {
-  background: var(--accent, #c76c3a);
-  border-color: var(--accent, #c76c3a);
-  color: #ffffff;
 }
 
 .hero-section {
@@ -362,9 +321,7 @@ body.preview-modal-open {
 .content-panel,
 .contact-panel,
 .quote-panel,
-.point-card,
-.atelier-note,
-.atelier-profile-card {
+.point-card {
   background: var(--surface, rgba(255, 255, 255, 0.88));
   border: 1px solid var(--surface-border, rgba(30, 20, 15, 0.08));
   box-shadow: var(--surface-shadow, 0 24px 70px rgba(18, 14, 11, 0.12));
@@ -401,9 +358,7 @@ body.preview-modal-open {
   font-size: 1rem;
 }
 
-.editorial-grid,
-.gallery-grid,
-.atelier-grid {
+.editorial-grid {
   display: grid;
   gap: 1.5rem;
 }
@@ -419,9 +374,7 @@ body.preview-modal-open {
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
 }
 
-.editorial-card__media,
-.gallery-card__media,
-.atelier-card__media {
+.editorial-card__media {
   min-height: 20rem;
   background-size: cover;
   background-position: center center;
@@ -433,9 +386,7 @@ body.preview-modal-open {
     linear-gradient(120deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.12));
 }
 
-.editorial-card__content,
-.gallery-card__content,
-.atelier-card__content {
+.editorial-card__content {
   padding: 2rem;
 }
 
@@ -496,53 +447,6 @@ body.preview-modal-open {
   color: var(--accent, #c76c3a);
 }
 
-.gallery-grid {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-}
-
-.gallery-card {
-  position: relative;
-  min-height: 30rem;
-  overflow: hidden;
-  border-radius: 2rem;
-  grid-column: span 4;
-}
-
-.gallery-card--wide {
-  grid-column: span 8;
-}
-
-.gallery-card__media {
-  height: 100%;
-}
-
-.gallery-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 9, 13, 0.15), rgba(8, 9, 13, 0.9));
-}
-
-.gallery-card__content {
-  position: absolute;
-  inset: auto 1.25rem 1.25rem 1.25rem;
-  z-index: 1;
-  border-radius: 1.5rem;
-}
-
-.atelier-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.atelier-card {
-  overflow: hidden;
-  border-radius: 1.8rem;
-}
-
-.atelier-card__content {
-  border-top: 1px solid var(--surface-border, rgba(30, 20, 15, 0.08));
-}
-
 .content-panel {
   border-radius: 1.9rem;
   padding: 2rem;
@@ -575,8 +479,7 @@ body.preview-modal-open {
   padding: 1.5rem;
 }
 
-.point-card h3,
-.atelier-profile-card h3 {
+.point-card h3 {
   margin-bottom: 0.75rem;
   font-size: 1.05rem;
   font-weight: 700;
@@ -584,8 +487,7 @@ body.preview-modal-open {
   text-transform: uppercase;
 }
 
-.point-card p,
-.atelier-profile-card p {
+.point-card p {
   margin-bottom: 0;
   color: var(--muted, rgba(0, 0, 0, 0.68));
 }
@@ -801,65 +703,6 @@ body.preview-modal-open {
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
 }
 
-.gallery-hero-copy {
-  max-width: 45rem;
-}
-
-.gallery-highlight-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 1.75rem;
-}
-
-.gallery-highlight {
-  min-width: 11rem;
-  padding: 1rem 1.15rem;
-  border-radius: 1.2rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-}
-
-.gallery-highlight strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 1.1rem;
-}
-
-.atelier-hero-card {
-  max-width: 37rem;
-  padding: 2.25rem;
-  border-radius: 2rem;
-  transform: translateY(1.6rem);
-  background: rgba(255, 248, 242, 0.9);
-}
-
-.atelier-hero-card .hero-kicker,
-.atelier-hero-card .section-label {
-  color: var(--accent, #b35f39);
-}
-
-.atelier-hero-card .hero-note {
-  color: var(--muted, rgba(49, 37, 29, 0.72));
-}
-
-.atelier-note {
-  border-radius: 1.7rem;
-  padding: 1.4rem;
-}
-
-.atelier-profile-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 1.5rem;
-}
-
-.atelier-profile-card {
-  border-radius: 1.8rem;
-  padding: 1.9rem;
-}
-
 .theme-editorial {
   --page-bg: #f5f1ea;
   --page-glow: rgba(255, 255, 255, 0.94);
@@ -874,9 +717,6 @@ body.preview-modal-open {
   --nav-link: rgba(36, 26, 19, 0.82);
   --brand-text: #221811;
   --brand-muted: rgba(34, 24, 17, 0.58);
-  --switcher-label: rgba(34, 24, 17, 0.54);
-  --switcher-border: rgba(34, 24, 17, 0.14);
-  --switcher-text: rgba(34, 24, 17, 0.78);
   --hero-overlay: linear-gradient(115deg, rgba(26, 20, 17, 0.78), rgba(26, 20, 17, 0.34) 48%, rgba(245, 241, 234, 0.16));
   --hero-kicker: rgba(255, 255, 255, 0.78);
   --hero-note: rgba(255, 255, 255, 0.74);
@@ -891,75 +731,6 @@ body.preview-modal-open {
   --modal-muted: rgba(255, 255, 255, 0.72);
   --contact-glow: rgba(164, 77, 42, 0.18);
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.theme-gallery {
-  --page-bg: #0d1015;
-  --page-glow: rgba(41, 63, 90, 0.32);
-  --page-text: #eef3ff;
-  --muted: rgba(222, 229, 241, 0.72);
-  --accent: #62b6ff;
-  --surface: rgba(18, 24, 32, 0.86);
-  --surface-border: rgba(132, 167, 204, 0.16);
-  --surface-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
-  --nav-bg: rgba(9, 13, 18, 0.84);
-  --nav-border: rgba(255, 255, 255, 0.08);
-  --nav-link: rgba(236, 241, 255, 0.8);
-  --brand-text: #f5f9ff;
-  --brand-muted: rgba(227, 234, 246, 0.58);
-  --switcher-label: rgba(227, 234, 246, 0.52);
-  --switcher-border: rgba(227, 234, 246, 0.18);
-  --switcher-text: rgba(236, 241, 255, 0.82);
-  --hero-overlay: linear-gradient(180deg, rgba(5, 8, 12, 0.26), rgba(5, 8, 12, 0.9));
-  --hero-kicker: rgba(238, 243, 255, 0.76);
-  --hero-note: rgba(238, 243, 255, 0.68);
-  --button-secondary-border: rgba(255, 255, 255, 0.3);
-  --button-secondary-text: #eef3ff;
-  --badge-bg: rgba(98, 182, 255, 0.14);
-  --meta-text: rgba(224, 231, 242, 0.8);
-  --footer-bg: #07090d;
-  --footer-text: rgba(236, 241, 255, 0.7);
-  --modal-bg: #0b0f14;
-  --modal-text: #edf2ff;
-  --modal-border: rgba(255, 255, 255, 0.08);
-  --modal-muted: rgba(237, 242, 255, 0.72);
-  --contact-glow: rgba(98, 182, 255, 0.24);
-  --font-display: "Baskerville", "Times New Roman", serif;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.theme-atelier {
-  --page-bg: #ebe2d5;
-  --page-glow: rgba(255, 250, 243, 0.92);
-  --page-text: #231913;
-  --muted: rgba(49, 37, 29, 0.72);
-  --accent: #b35f39;
-  --surface: rgba(255, 248, 242, 0.82);
-  --surface-border: rgba(57, 41, 29, 0.08);
-  --surface-shadow: 0 28px 80px rgba(64, 44, 31, 0.12);
-  --nav-bg: rgba(239, 230, 218, 0.9);
-  --nav-border: rgba(35, 25, 19, 0.08);
-  --nav-link: rgba(35, 25, 19, 0.82);
-  --brand-text: #231913;
-  --brand-muted: rgba(35, 25, 19, 0.58);
-  --switcher-label: rgba(35, 25, 19, 0.52);
-  --switcher-border: rgba(35, 25, 19, 0.16);
-  --switcher-text: rgba(35, 25, 19, 0.8);
-  --hero-overlay: linear-gradient(112deg, rgba(44, 28, 18, 0.72), rgba(44, 28, 18, 0.24) 58%, rgba(235, 226, 213, 0.08));
-  --hero-kicker: rgba(255, 246, 238, 0.8);
-  --hero-note: rgba(255, 246, 238, 0.72);
-  --button-secondary-border: rgba(255, 255, 255, 0.34);
-  --button-secondary-text: #fff8f2;
-  --badge-bg: rgba(179, 95, 57, 0.12);
-  --footer-bg: #1b140f;
-  --footer-text: rgba(244, 235, 226, 0.74);
-  --modal-bg: #1a130e;
-  --modal-text: #f7efe7;
-  --modal-border: rgba(255, 255, 255, 0.08);
-  --modal-muted: rgba(247, 239, 231, 0.72);
-  --contact-glow: rgba(179, 95, 57, 0.22);
-  --font-display: "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -1002,15 +773,8 @@ body.preview-modal-open {
     grid-column: span 12;
   }
 
-  .editorial-card,
-  .atelier-grid,
-  .atelier-profile-grid {
+  .editorial-card {
     grid-template-columns: 1fr;
-  }
-
-  .gallery-card,
-  .gallery-card--wide {
-    grid-column: span 12;
   }
 }
 
@@ -1035,10 +799,6 @@ body.preview-modal-open {
 }
 
 @media (max-width: 767.98px) {
-  .preview-brand img {
-    width: 108px;
-  }
-
   .preview-brand-copy {
     display: none;
   }
@@ -1048,18 +808,11 @@ body.preview-modal-open {
   }
 
   .editorial-card__content,
-  .gallery-card__content,
-  .atelier-card__content,
   .content-panel,
   .quote-panel,
   .contact-panel,
-  .editorial-hero-card,
-  .atelier-hero-card {
+  .editorial-hero-card {
     padding: 1.5rem;
-  }
-
-  .gallery-card {
-    min-height: 24rem;
   }
 
   .contact-value {

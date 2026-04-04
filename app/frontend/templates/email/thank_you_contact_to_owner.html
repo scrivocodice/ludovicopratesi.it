@@ -1,9 +1,0 @@
-{% extends "mail_templated/base.tpl" %}
-
-{% block subject %}
-{{ contact.subject | safe }}
-{% endblock %}
-
-{% block body %}
-{{ contact.message | safe }}
-{% endblock %}
