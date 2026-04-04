@@ -224,10 +224,10 @@ body.preview-modal-open {
 
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 82vh;
   display: flex;
   align-items: flex-end;
-  padding: 8rem 0 4.5rem;
+  padding: 6.75rem 0 3.25rem;
   background-size: cover;
   background-position: center center;
 }
@@ -795,7 +795,7 @@ body.preview-modal-open {
 
   .hero-section {
     min-height: auto;
-    padding-top: 8rem;
+    padding-top: 6.75rem;
   }
 
   .col-lg-5,
