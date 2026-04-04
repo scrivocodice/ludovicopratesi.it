@@ -11,7 +11,7 @@ DATABASES = {
 }
 
 # media
-MEDIA_ROOT = '/home/xm3ron/src/_media/ludovicopratesi.it/'
+MEDIA_ROOT = '/home/xm3ron/src/ludovicopratesi.it/media'
 MEDIA_URL = '/media/'
 
 # static settings
