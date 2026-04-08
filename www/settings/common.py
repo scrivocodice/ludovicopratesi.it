@@ -20,7 +20,7 @@ USE_I18N = True
 TIME_ZONE = 'Europe/Rome'
 USE_TZ = False
 
-SECRET_KEY = 'tl0$hg*+m)a*!nb3#cpau@z!es2c7visyibnx&9j_a382pnidf'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'local-development-only-secret-key')
 
 LOCALE_PATHS = [
     os.path.join(PROJECT_PATH, 'locale'),

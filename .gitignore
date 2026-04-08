@@ -7,3 +7,5 @@ staticfiles
 db.sqlite3
 .codex
 .python-version
+.env.production
+.pgpass_dump

@@ -18,6 +18,27 @@ Se si vuole lanciare in cron il comando eseguire:
 DB_SYSTEM_USER='' DB_PASSFILE='/srv/apps/ludovicopratesi/.pgpass_dump' sh runner.sh
 ```
 
+## Production env
+
+Le credenziali di produzione non devono stare nel repository. Copiare
+`etc/env/ludovicopratesi.env.example` in `/srv/apps/ludovicopratesi/.env.production`,
+compilare i valori reali e dare permessi stretti:
+
+```bash
+cp etc/env/ludovicopratesi.env.example /srv/apps/ludovicopratesi/.env.production
+chmod 600 /srv/apps/ludovicopratesi/.env.production
+```
+
+Per eseguire i comandi Django in produzione:
+
+```bash
+set -a
+. /srv/apps/ludovicopratesi/.env.production
+set +a
+/srv/venvs/ludovicopratesi/bin/python manage.py migrate --settings=www.settings.prod --noinput
+/srv/venvs/ludovicopratesi/bin/python manage.py collectstatic --settings=www.settings.prod --noinput
+```
+
 
 
 
