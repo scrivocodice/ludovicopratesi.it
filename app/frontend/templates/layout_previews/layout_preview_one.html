@@ -6,7 +6,6 @@
     <div class="container hero-content">
       <div class="hero-panel editorial-hero-card text-white">
         <div class="hero-kicker">{{ hero_kicker }}</div>
-        <p class="section-label text-white mb-3">{{ draft_name }} · {{ draft_style }}</p>
         <h1 class="hero-title mb-4">{{ hero_title }}</h1>
         <p class="hero-text mb-3">{{ hero_text }}</p>
         <p class="hero-note mb-0">{{ hero_note }}</p>
@@ -23,13 +22,13 @@
       <div class="section-heading">
         <div>
           <p class="section-label mb-2">Mostre</p>
-          <h2 class="section-title">Blocchi grandi, ordinati dalla più recente e con approfondimento in modale.</h2>
+          <h2 class="section-title">Mostre recenti e archivio curatoriale.</h2>
         </div>
-        <p class="section-intro">Questa soluzione usa card orizzontali con immagine protagonista e testo ordinato sul lato. In apertura mostriamo le prime {{ initial_exhibits_count }} e il resto si espande nella stessa pagina con “Vedi altre”.</p>
+        <p class="section-intro">Una selezione ordinata dalla piu recente; le prime {{ initial_exhibits_count }} schede sono subito visibili e il resto si apre nella stessa pagina.</p>
       </div>
       <div id="editorialExhibits" class="editorial-grid">
         {% for exhibit in exhibits %}
-          <article class="editorial-card content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}">
+          <article class="editorial-card editorial-card--interactive content-panel preview-exhibit{% if forloop.counter > initial_exhibits_count %} is-hidden{% endif %}" data-modal-open="#{{ exhibit.modal_id }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="{{ exhibit.modal_id }}" aria-label="Apri i dettagli della mostra {{ exhibit.title }}">
             <div class="editorial-card__media{% if not exhibit.image_url %} preview-media-fallback{% endif %}"{% if exhibit.image_url %} style="background-image: url('{{ exhibit.image_url }}');"{% endif %}></div>
             <div class="editorial-card__content">
               <div class="card-kicker">{{ exhibit.category }}</div>
@@ -39,9 +38,9 @@
                 <span>{{ exhibit.location }}</span>
                 <span>{{ exhibit.period }}</span>
               </div>
-              <button class="card-link" type="button" data-bs-toggle="modal" data-bs-target="#{{ exhibit.modal_id }}">
+              <span class="card-link card-link--hint" aria-hidden="true">
                 Apri dettagli mostra
-              </button>
+              </span>
             </div>
           </article>
         {% endfor %}
@@ -79,7 +78,7 @@
         <div class="col-lg-5">
           <div class="quote-panel">
             <blockquote>{{ about_quote }}</blockquote>
-            <footer>Direzione consigliata se vuoi un sito sobrio, elegante e molto leggibile.</footer>
+            <footer>Ludovico Pratesi</footer>
           </div>
         </div>
       </div>
@@ -91,7 +90,7 @@
       <div class="contact-panel">
         <div class="contact-panel__inner">
           <p class="section-label mb-2">{{ contacts_title }}</p>
-          <h2 class="section-title mb-3">Email e indirizzo in chiusura, senza form.</h2>
+          <h2 class="section-title mb-3">Email e studio.</h2>
           <p class="section-intro mb-4">{{ contacts_intro }}</p>
           <div class="row g-4">
             <div class="col-lg-6">

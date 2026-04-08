@@ -1,7 +1,7 @@
 from .common import *
 
 DEBUG = True
-TEMPLATE_DEBUG = True
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 DATABASES = {
     'default': {
@@ -11,12 +11,11 @@ DATABASES = {
 }
 
 # media
-MEDIA_ROOT = '/home/xm3ron/src/_media/ludovicopratesi.it/'
+MEDIA_ROOT = '/home/xm3ron/src/ludovicopratesi.it/media'
 MEDIA_URL = '/media/'
 
 # static settings
 STATIC_URL = '/static/'
-COMPRESS_ROOT = '/tmp/'
 
 # email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

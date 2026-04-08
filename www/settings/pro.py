@@ -53,25 +53,29 @@ STATIC_URL = '/static/'
 
 # email settings
 EMAIL_HOST = 'mail2.mclink.it'
-EMAIL_PORT = '465'
+EMAIL_PORT = 465
 EMAIL_HOST_USER = 'info@ludovicopratesi.it'
 EMAIL_HOST_PASSWORD = 'LudPra1'
 EMAIL_USE_SSL = True
 
-# django_compressor
-COMPRESS_OFFLINE = True
+GOOGLE_ANALYTICS_MEASUREMENT_ID = 'G-3R8THL30PZ'
 
 # Logging
+
+PROD_LOG_FILE = '/srv/logs/ludovicopratesi.django.error.log'
+PROD_LOG_DIR = os.path.dirname(PROD_LOG_FILE)
+PROD_LOG_HANDLER = {
+    'level': 'ERROR',
+    'class': 'logging.FileHandler' if os.path.isdir(PROD_LOG_DIR) else 'logging.StreamHandler',
+}
+if os.path.isdir(PROD_LOG_DIR):
+    PROD_LOG_HANDLER['filename'] = PROD_LOG_FILE
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': '/srv/logs/ludovicopratesi.django.error.log',
-        },
+        'file': PROD_LOG_HANDLER,
     },
     'loggers': {
         'django': {

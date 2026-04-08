@@ -1,6 +1,6 @@
 {% for exhibit in exhibits %}
-  <div class="modal fade" id="{{ exhibit.modal_id }}" tabindex="-1" aria-labelledby="{{ exhibit.modal_id }}Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal" id="{{ exhibit.modal_id }}" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="{{ exhibit.modal_id }}Label" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content preview-modal">
         {% if exhibit.image_url %}
           <div class="preview-modal__image" style="background-image: url('{{ exhibit.image_url }}');"></div>
@@ -10,7 +10,7 @@
             <div class="card-kicker">{{ exhibit.category }}</div>
             <h2 id="{{ exhibit.modal_id }}Label" class="modal-title fs-2">{{ exhibit.title }}</h2>
           </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+          <button type="button" class="btn-close" data-modal-close aria-label="Chiudi"></button>
         </div>
         <div class="modal-body">
           <p class="card-summary mb-3">{{ exhibit.summary }}</p>
