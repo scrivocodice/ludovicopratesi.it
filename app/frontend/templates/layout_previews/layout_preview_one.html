@@ -1,4 +1,5 @@
 {% extends "layout_previews/layout_preview_base.html" %}
+{% load static %}
 {% block body_class %}theme-editorial{% endblock %}
 
 {% block content %}
@@ -63,15 +64,26 @@
             <p class="section-label mb-2">{{ about_label }}</p>
             <h2 class="section-title mb-4">{{ about_title }}</h2>
             <p class="section-intro mb-0">{{ about_intro }}</p>
-            <div class="row g-3 mt-4">
-              {% for point in about_points %}
-                <div class="col-md-4">
-                  <div class="point-card">
-                    <h3>{{ point.title }}</h3>
-                    <p>{{ point.text }}</p>
+            <div class="row g-3 mt-4 profile-detail-grid">
+              {% if about_primary_point %}
+                <div class="col-4">
+                  <div class="point-card point-card--copy">
+                    <h3>{{ about_primary_point.title }}</h3>
+                    <p>{{ about_primary_point.text }}</p>
                   </div>
                 </div>
-              {% endfor %}
+              {% endif %}
+              <div class="col-8">
+                <div class="point-card point-card--image-shell">
+                  {% if about_feature_image_static %}
+                    <img class="point-card__image" src="{% static about_feature_image_static %}" alt="{{ about_feature_image_alt }}" loading="lazy">
+                  {% elif about_feature_image %}
+                    <img class="point-card__image" src="{{ about_feature_image }}" alt="{{ about_feature_image_alt }}" loading="lazy">
+                  {% else %}
+                    <div class="point-card__media point-card__media--profile preview-media-fallback" aria-hidden="true"></div>
+                  {% endif %}
+                </div>
+              </div>
             </div>
           </div>
         </div>

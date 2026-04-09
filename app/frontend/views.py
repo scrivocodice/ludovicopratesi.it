@@ -34,6 +34,9 @@ HOME_PAGE = {
     'about_title': 'Una pratica che ha tenuto insieme curatella, critica e didattica.',
     'about_intro': 'Ludovico Pratesi è curatore e critico d’arte, docente allo IULM di Milano, direttore artistico di Spazio Taverna e voce storica del contemporaneo su La Repubblica.',
     'about_quote': 'Una ricerca curatoriale costruita tra mostre, istituzioni culturali, scrittura critica e formazione.',
+    'about_feature_image_static': 'img/ritratto.webp',
+    'about_feature_image': 'https://media.ludovicopratesi.it/thumbs/items/1b/f0/7a4deafc92387c03629cea08c419.jpg.637x388_q50_crop_smart_upscale.jpg',
+    'about_feature_image_alt': 'Ludovico Pratesi in uno spazio espositivo di Spazio Taverna',
     'about_points': [
         {
             'title': 'Spazio Taverna',
@@ -129,6 +132,8 @@ def _build_homepage_context(request):
         'remaining_exhibits_count': max(len(exhibit_items) - INITIAL_EXHIBITS_COUNT, 0),
     }
     context.update(HOME_PAGE)
+    about_points = context.get('about_points') or []
+    context['about_primary_point'] = about_points[0] if about_points else None
     return context
 
 

@@ -46,6 +46,14 @@ select {
   grid-column: span 12;
 }
 
+.col-4 {
+  grid-column: span 4;
+}
+
+.col-8 {
+  grid-column: span 8;
+}
+
 .g-3 {
   --grid-gap: 1rem;
 }
@@ -510,6 +518,32 @@ body.preview-modal-open {
   padding: 1.5rem;
 }
 
+.profile-detail-grid {
+  align-items: stretch;
+}
+
+.point-card--copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.point-card--image-shell {
+  overflow: hidden;
+  padding: 0;
+}
+
+.point-card__image,
+.point-card__media--profile {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 17rem;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
 .point-card h3 {
   margin-bottom: 0.75rem;
   font-size: 1.05rem;
@@ -809,12 +843,6 @@ body.preview-modal-open {
   }
 }
 
-@media (min-width: 768px) {
-  .col-md-4 {
-    grid-column: span 4;
-  }
-}
-
 @media (min-width: 992px) {
   .col-lg-5 {
     grid-column: span 5;
@@ -848,6 +876,11 @@ body.preview-modal-open {
 
   .contact-value {
     font-size: 1.15rem;
+  }
+
+  .point-card__image,
+  .point-card__media--profile {
+    min-height: 14rem;
   }
 
   .modal {
