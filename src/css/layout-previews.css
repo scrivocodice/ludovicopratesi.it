@@ -1,7 +1,7 @@
 :root {
   scroll-behavior: smooth;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  --font-display: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
 }
 
 *,
@@ -104,7 +104,7 @@ select {
 
 body.preview-body {
   position: relative;
-  font-family: var(--font-body, "Manrope", sans-serif);
+  font-family: var(--font-body, Georgia, serif);
   line-height: 1.5;
   color: var(--page-text, #171717);
   background:
@@ -505,7 +505,7 @@ body.preview-modal-open {
 }
 
 .quote-panel blockquote.quote-panel__cv {
-  font-family: var(--font-display, "Iowan Old Style", Georgia, serif);
+  font-family: var(--font-display, Georgia, serif);
   font-size: 1.5rem;
   line-height: 1.6;
   font-style: italic;
@@ -810,8 +810,8 @@ body.preview-modal-open {
   --modal-border: rgba(255, 255, 255, 0.08);
   --modal-muted: rgba(255, 255, 255, 0.72);
   --contact-glow: rgba(164, 77, 42, 0.18);
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  --font-body: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
 }
 
 @media (max-width: 991.98px) {
