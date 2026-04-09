@@ -33,8 +33,22 @@ HOME_PAGE = {
     'hero_note': 'Fondatore e Direttore di Spazio Taverna.',
     'about_label': 'Profilo',
     'about_title': 'Una pratica che ha tenuto insieme curatella, critica e didattica.',
-    'about_intro': 'Ludovico Pratesi è curatore e critico d’arte, docente allo IULM di Milano, direttore artistico di Spazio Taverna e voce storica del contemporaneo su La Repubblica.',
-    'about_quote': 'Una ricerca curatoriale costruita tra mostre, istituzioni culturali, scrittura critica e formazione.',
+    'about_intro': 'Ludovico Pratesi è curatore e critico d’arte, direttore artistico di Spazio Taverna.',
+    'about_quote': """
+Nato nel 1961 a Roma, dove vive e lavora.
+
+Nel 2020 ha fondato con Marco Bassan lo studio curatoriale Spazio Taverna.
+
+Collabora con Artribune, ArtsLife, Arte Mondadori, Art Dossier e ArtNews.
+
+Autore di saggi e pubblicazioni di arte contemporanea, tra cui monografie di Kounellis, Cattelan e Pistoletto.
+
+È professore di Museologia del Contemporaneo all'Accademia di Belle Arti di Napoli.
+
+Dal 2000 al 2017 è stato direttore artistico del Centro Arti Visive Pescheria di Pesaro.
+
+Dal 1985 al 2025 ha collaborato a La Repubblica.
+""".strip(),
     'about_feature_image_static': 'img/ritratto.webp',
     'about_feature_image': 'https://media.ludovicopratesi.it/thumbs/items/1b/f0/7a4deafc92387c03629cea08c419.jpg.637x388_q50_crop_smart_upscale.jpg',
     'about_feature_image_alt': 'Ludovico Pratesi in uno spazio espositivo di Spazio Taverna',
@@ -42,14 +56,6 @@ HOME_PAGE = {
         {
             'title': 'Spazio Taverna',
             'text': 'La direzione artistica di Spazio Taverna collega progetto curatoriale, committenze e attivazione dei luoghi.',
-        },
-        {
-            'title': 'IULM Milano',
-            'text': 'L’insegnamento di Didattica dell’arte rafforza la dimensione pubblica e formativa del lavoro.',
-        },
-        {
-            'title': 'La Repubblica',
-            'text': 'La scrittura critica accompagna l’attivita curatoriale e amplia il dialogo con il sistema dell’arte contemporanea.',
         },
     ],
     'contacts_title': 'Contatti diretti',

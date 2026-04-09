@@ -504,6 +504,21 @@ body.preview-modal-open {
   line-height: 1.05;
 }
 
+.quote-panel blockquote.quote-panel__cv {
+  font-family: var(--font-display, "Iowan Old Style", Georgia, serif);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.quote-panel__cv p {
+  margin: 0 0 0.9rem;
+}
+
+.quote-panel__cv p:last-child {
+  margin-bottom: 0;
+}
+
 .quote-panel footer {
   margin-top: 1.1rem;
   color: var(--muted, rgba(0, 0, 0, 0.65));
