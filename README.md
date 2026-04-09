@@ -39,6 +39,21 @@ set +a
 /srv/venvs/ludovicopratesi/bin/python manage.py collectstatic --settings=www.settings.prod --noinput
 ```
 
+Deploy rapido in produzione:
+
+```bash
+chmod +x /srv/apps/ludovicopratesi/bin/deploy_prod.sh
+/srv/apps/ludovicopratesi/bin/deploy_prod.sh
+```
+
+Lo script esegue `git pull --ff-only`, carica `.env.production`, lancia
+`collectstatic` con `www.settings.prod` e infine fa `supervisorctl reload`.
+Se vuoi ricaricare solo il programma applicativo invece di tutto supervisord:
+
+```bash
+SUPERVISOR_ACTION=restart /srv/apps/ludovicopratesi/bin/deploy_prod.sh
+```
+
 
 
 
