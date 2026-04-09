@@ -874,6 +874,16 @@ body.preview-modal-open {
 
 @media (max-width: 767.98px) {
   .preview-brand-copy {
+    display: flex;
+    min-width: 0;
+  }
+
+  .preview-brand-copy span {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .preview-brand-copy small {
     display: none;
   }
 
