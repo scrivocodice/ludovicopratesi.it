@@ -15,10 +15,10 @@ PREVIEW_NAV_ITEMS = [
 INITIAL_EXHIBITS_COUNT = 6
 
 PREVIEW_CONTACTS = {
-    'email': 'lpratesi@futuronline.it',
+    'email': 'ludovico@spaziotaverna.it',
     'address_lines': [
-        'Via Principe Amedeo 126/b',
-        '00185 Roma',
+        'Viale Pola 6',
+        '00198 Roma',
     ],
 }
 
@@ -28,11 +28,11 @@ HOME_PAGE = {
     'hero_image': 'https://media.ludovicopratesi.it/thumbs/items/1b/f0/7a4deafc92387c03629cea08c419.jpg.637x388_q50_crop_smart_upscale.jpg',
     'hero_kicker': 'Ludovico Pratesi',
     'hero_title': 'Curatore e critico d’arte.',
-    'hero_text': 'Professore di Didattica dell’arte all’Università IULM di Milano.',
-    'hero_note': 'Direttore artistico di Spazio Taverna e critico del quotidiano La Repubblica.',
+    'hero_text': '',
+    'hero_note': 'Fondatore e Direttore di Spazio Taverna.',
     'about_label': 'Profilo',
-    'about_title': 'Una pratica che tiene insieme curatela, critica e didattica.',
-    'about_intro': 'Ludovico Pratesi e curatore e critico d’arte, docente allo IULM di Milano, direttore artistico di Spazio Taverna e voce storica del contemporaneo su La Repubblica.',
+    'about_title': 'Una pratica che ha tenuto insieme curatella, critica e didattica.',
+    'about_intro': 'Ludovico Pratesi è curatore e critico d’arte, docente allo IULM di Milano, direttore artistico di Spazio Taverna e voce storica del contemporaneo su La Repubblica.',
     'about_quote': 'Una ricerca curatoriale costruita tra mostre, istituzioni culturali, scrittura critica e formazione.',
     'about_points': [
         {

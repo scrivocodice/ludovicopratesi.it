@@ -3,6 +3,8 @@ from .common import *
 DEBUG = True
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
+SECRET_KEY='pippo'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
