@@ -34,7 +34,7 @@ HOME_PAGE = {
     'hero_text': '',
     'hero_note': 'Fondatore e Direttore di Spazio Taverna.',
     'about_label': 'Profilo',
-    'about_title': 'Una pratica che ha tenuto insieme curatella, critica e didattica.',
+    'about_title': 'Una pratica che ha tenuto insieme curatela, critica e didattica.',
     'about_intro': 'Ludovico Pratesi è curatore e critico d’arte, direttore artistico di Spazio Taverna.',
     'about_quote': """
 Nato nel 1961 a Roma, dove vive e lavora.
