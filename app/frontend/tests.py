@@ -73,6 +73,12 @@ class HomepageTest(TestCase):
         self.assertContains(response, 'role="button"', count=1)
         self.assertContains(response, 'aria-controls="mostra-card-click"', count=1)
 
+    def test_homepage_uses_copy_button_for_email_instead_of_mailto(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'data-copy-text="ludovico@spaziotaverna.it"', html=False)
+        self.assertContains(response, 'Copia email', html=False)
+        self.assertNotContains(response, 'mailto:ludovico@spaziotaverna.it', html=False)
+
     def test_homepage_decodes_html_entities_in_exhibit_text(self):
         Exhibit.objects.create(
             title='&lsquo;Mostra&rsquo; &amp; prova',

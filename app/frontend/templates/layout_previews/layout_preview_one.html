@@ -107,7 +107,12 @@
           <div class="row g-4">
             <div class="col-lg-6">
               <span class="contact-label">Email</span>
-              <a class="contact-value" href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+              <div class="contact-copy-group">
+                <span class="contact-value">{{ contacts.email }}</span>
+                <button class="contact-copy-button" type="button" data-copy-text="{{ contacts.email }}" data-copy-success="Email copiata">
+                  Copia email
+                </button>
+              </div>
             </div>
             <div class="col-lg-6">
               <span class="contact-label">Indirizzo</span>

@@ -105,6 +105,53 @@
       });
     });
 
+    function fallbackCopyText(value) {
+      var helper = document.createElement('textarea');
+      helper.value = value;
+      helper.setAttribute('readonly', '');
+      helper.style.position = 'absolute';
+      helper.style.left = '-9999px';
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand('copy');
+      document.body.removeChild(helper);
+    }
+
+    document.querySelectorAll('[data-copy-text]').forEach(function (button) {
+      var defaultLabel = button.textContent.trim();
+      var successLabel = button.dataset.copySuccess || 'Copiato';
+      var resetTimer = null;
+
+      button.addEventListener('click', async function () {
+        var value = button.dataset.copyText;
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(value);
+          } else {
+            fallbackCopyText(value);
+          }
+
+          button.textContent = successLabel;
+          button.classList.add('is-copied');
+          button.setAttribute('aria-label', successLabel);
+
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(function () {
+            button.textContent = defaultLabel;
+            button.classList.remove('is-copied');
+            button.setAttribute('aria-label', defaultLabel);
+          }, 1800);
+        } catch (error) {
+          button.textContent = 'Riprova';
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(function () {
+            button.textContent = defaultLabel;
+          }, 1800);
+        }
+      });
+    });
+
     function closeModal(modal) {
       if (!modal) {
         return;
