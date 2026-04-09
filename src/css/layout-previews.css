@@ -873,18 +873,32 @@ body.preview-modal-open {
 }
 
 @media (max-width: 767.98px) {
-  .preview-brand-copy {
-    display: flex;
+  .preview-brand {
+    flex: 1 1 auto;
     min-width: 0;
   }
 
+  .preview-brand-copy {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .preview-brand-copy span {
-    font-size: 1.05rem;
+    font-size: 1rem;
     white-space: nowrap;
   }
 
   .preview-brand-copy small {
-    display: none;
+    display: block;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .profile-detail-grid > .col-4,
+  .profile-detail-grid > .col-8 {
+    grid-column: span 12;
   }
 
   .section-shell {
