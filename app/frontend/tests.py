@@ -73,6 +73,31 @@ class HomepageTest(TestCase):
         self.assertContains(response, 'role="button"', count=1)
         self.assertContains(response, 'aria-controls="mostra-card-click"', count=1)
 
+    def test_homepage_decodes_html_entities_in_exhibit_text(self):
+        Exhibit.objects.create(
+            title='&lsquo;Mostra&rsquo; &amp; prova',
+            slug='mostra-entita-html',
+            authors='Autore&nbsp;Test',
+            excerpt='&lsquo;Ci eleviamo sollevando gli altri&rsquo; di&nbsp;Marinella Senatore, &egrave; la seconda opera.',
+            description='<p>&lsquo;Ci eleviamo sollevando gli altri&rsquo; di&nbsp;Marinella Senatore, &egrave; la seconda opera.</p>',
+            address='Roma&nbsp;Centro',
+            begun_at='2026-01-10',
+            ended_at='2026-01-12',
+        )
+
+        response = self.client.get('/')
+        self.assertContains(response, "‘Mostra’ &amp; prova", html=False)
+        self.assertContains(response, 'Autore Test', html=False)
+        self.assertContains(
+            response,
+            '‘Ci eleviamo sollevando gli altri’ di Marinella Senatore, è la seconda opera.',
+            html=False,
+        )
+        self.assertContains(response, 'Roma Centro', html=False)
+        self.assertNotContains(response, '&lsquo;', html=False)
+        self.assertNotContains(response, '&nbsp;', html=False)
+        self.assertNotContains(response, '&egrave;', html=False)
+
 
 class AdminLoginTest(TestCase):
     def test_admin_login_is_available(self):

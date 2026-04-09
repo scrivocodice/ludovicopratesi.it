@@ -1,3 +1,5 @@
+from html import unescape
+
 from django.conf import settings
 from django.shortcuts import render
 from django.utils.html import strip_tags
@@ -73,6 +75,20 @@ def _get_exhibit_text(exhibit, excerpt=False):
     return exhibit.excerpt if excerpt else exhibit.description
 
 
+def _decode_html_entities(value):
+    if not value:
+        return ''
+    return unescape(value).replace('\xa0', ' ')
+
+
+def _normalize_plain_text(value):
+    return ' '.join(_decode_html_entities(strip_tags(value or '')).split())
+
+
+def _normalize_html_fragment(value):
+    return _decode_html_entities(value)
+
+
 def _get_exhibit_image_url(exhibit):
     images = list(exhibit.images.all())
     if not images:
@@ -96,15 +112,15 @@ def _get_exhibit_image_url(exhibit):
 
 
 def _serialize_exhibit_for_preview(exhibit):
-    summary = _get_exhibit_text(exhibit, excerpt=True)
+    summary = _normalize_plain_text(_get_exhibit_text(exhibit, excerpt=True))
     if not summary:
-        summary = strip_tags(_get_exhibit_text(exhibit) or '')[:240]
-    authors = exhibit.get_authors() or 'Mostra'
+        summary = _normalize_plain_text(_get_exhibit_text(exhibit))[:240]
+    authors = _normalize_plain_text(exhibit.get_authors()) or 'Mostra'
     return {
         'modal_id': 'mostra-%s' % exhibit.slug,
         'category': authors,
-        'title': exhibit.title,
-        'location': exhibit.address,
+        'title': _normalize_plain_text(exhibit.title),
+        'location': _normalize_plain_text(exhibit.address),
         'period': '%s - %s' % (
             _format_preview_date(exhibit.begun_at),
             _format_preview_date(exhibit.ended_at),
@@ -112,7 +128,7 @@ def _serialize_exhibit_for_preview(exhibit):
         'summary': summary,
         'image_url': _get_exhibit_image_url(exhibit),
         'source_url': None,
-        'description_html': _get_exhibit_text(exhibit) or '',
+        'description_html': _normalize_html_fragment(_get_exhibit_text(exhibit)),
     }
 
 
