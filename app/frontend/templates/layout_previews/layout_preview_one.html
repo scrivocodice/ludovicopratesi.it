@@ -3,7 +3,7 @@
 {% block body_class %}theme-editorial{% endblock %}
 
 {% block content %}
-  <section id="hero" class="hero-section" style="background-image: url('{{ hero_image }}');">
+  <section id="hero" class="hero-section" style="background-image: url('{% if hero_image_static %}{% static hero_image_static %}{% else %}{{ hero_image }}{% endif %}');">
     <div class="container hero-content">
       <div class="hero-panel editorial-hero-card text-white">
         <div class="hero-kicker">{{ hero_kicker }}</div>

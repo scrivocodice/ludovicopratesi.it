@@ -25,6 +25,7 @@ PREVIEW_CONTACTS = {
 HOME_PAGE = {
     'page_title': 'Ludovico Pratesi',
     'template_name': 'layout_previews/layout_preview_one.html',
+    'hero_image_static': 'img/hero2.webp',
     'hero_image': 'https://media.ludovicopratesi.it/thumbs/items/1b/f0/7a4deafc92387c03629cea08c419.jpg.637x388_q50_crop_smart_upscale.jpg',
     'hero_kicker': 'Ludovico Pratesi',
     'hero_title': 'Curatore e critico d’arte.',
