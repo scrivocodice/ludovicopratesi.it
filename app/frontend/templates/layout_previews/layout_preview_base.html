@@ -15,7 +15,7 @@
     gtag('config', '{{ google_analytics_measurement_id }}');
   </script>
   {% endif %}
-  <link rel="stylesheet" href="{% static 'css/layout-previews.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout-previews.css' %}{% if static_version %}?v={{ static_version }}{% endif %}">
 </head>
 <body class="preview-body {% block body_class %}{% endblock %}">
   <nav id="previewNavbar" class="preview-navbar site-nav">

@@ -22,6 +22,21 @@ USE_TZ = False
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'local-development-only-secret-key')
 
+
+def get_static_version():
+    version_file = os.path.join(PROJECT_PATH, '.deploy-version')
+    try:
+        with open(version_file, 'r', encoding='utf-8') as handle:
+            value = handle.read().strip()
+            if value:
+                return value
+    except OSError:
+        pass
+    return os.environ.get('STATIC_VERSION', '')
+
+
+STATIC_VERSION = get_static_version()
+
 LOCALE_PATHS = [
     os.path.join(PROJECT_PATH, 'locale'),
 ]

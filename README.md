@@ -50,6 +50,8 @@ Lo script esegue `git pull --ff-only`, carica `.env.production`, lancia
 `collectstatic` con `www.settings.prod` e infine fa `supervisorctl reload`.
 Se `deploy` non ha accesso diretto al socket di Supervisor, lo script riprova
 automaticamente con `sudo supervisorctl`.
+In piu aggiorna `.deploy-version`, che viene appeso al CSS come query string
+`?v=...`, cosi il browser scarica il foglio stile nuovo a ogni deploy.
 Se vuoi ricaricare solo il programma applicativo invece di tutto supervisord:
 
 ```bash

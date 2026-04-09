@@ -12,9 +12,16 @@ ENV_FILE=${ENV_FILE:-"${APP_DIR}/.env.production"}
 DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-"www.settings.prod"}
 SUPERVISOR_ACTION=${SUPERVISOR_ACTION:-"reload"}
 SUPERVISOR_PROGRAM=${SUPERVISOR_PROGRAM:-"ludovicopratesi"}
+DEPLOY_VERSION_FILE=${DEPLOY_VERSION_FILE:-"${APP_DIR}/.deploy-version"}
 
 log() {
   printf '[deploy] %s\n' "$1"
+}
+
+write_deploy_version() {
+  deploy_version="$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD)"
+  printf '%s\n' "${deploy_version}" > "${DEPLOY_VERSION_FILE}"
+  log "Updated static version to ${deploy_version}"
 }
 
 run_supervisorctl() {
@@ -45,6 +52,8 @@ cd "${APP_DIR}"
 
 log "Pulling latest code"
 git pull --ff-only
+
+write_deploy_version
 
 log "Loading production environment"
 set -a

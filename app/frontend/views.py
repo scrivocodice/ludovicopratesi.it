@@ -134,6 +134,7 @@ def _build_homepage_context(request):
         'exhibits': exhibit_items,
         'contacts': PREVIEW_CONTACTS,
         'google_analytics_measurement_id': getattr(settings, 'GOOGLE_ANALYTICS_MEASUREMENT_ID', ''),
+        'static_version': getattr(settings, 'STATIC_VERSION', ''),
         'initial_exhibits_count': INITIAL_EXHIBITS_COUNT,
         'has_more_exhibits': len(exhibit_items) > INITIAL_EXHIBITS_COUNT,
         'remaining_exhibits_count': max(len(exhibit_items) - INITIAL_EXHIBITS_COUNT, 0),
