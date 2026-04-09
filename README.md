@@ -48,6 +48,8 @@ chmod +x /srv/apps/ludovicopratesi/bin/deploy_prod.sh
 
 Lo script esegue `git pull --ff-only`, carica `.env.production`, lancia
 `collectstatic` con `www.settings.prod` e infine fa `supervisorctl reload`.
+Se `deploy` non ha accesso diretto al socket di Supervisor, lo script riprova
+automaticamente con `sudo supervisorctl`.
 Se vuoi ricaricare solo il programma applicativo invece di tutto supervisord:
 
 ```bash

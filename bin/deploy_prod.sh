@@ -17,6 +17,20 @@ log() {
   printf '[deploy] %s\n' "$1"
 }
 
+run_supervisorctl() {
+  if supervisorctl "$@"; then
+    return 0
+  fi
+
+  if command -v sudo >/dev/null 2>&1; then
+    log "supervisorctl failed without sudo, retrying with sudo"
+    sudo supervisorctl "$@"
+    return 0
+  fi
+
+  return 1
+}
+
 if [ ! -f "${ENV_FILE}" ]; then
   printf 'Missing environment file: %s\n' "${ENV_FILE}" >&2
   exit 1
@@ -45,11 +59,11 @@ log "Collecting static files"
 case "${SUPERVISOR_ACTION}" in
   reload)
     log "Reloading supervisord"
-    supervisorctl reload
+    run_supervisorctl reload
     ;;
   restart)
     log "Restarting supervisor program ${SUPERVISOR_PROGRAM}"
-    supervisorctl restart "${SUPERVISOR_PROGRAM}"
+    run_supervisorctl restart "${SUPERVISOR_PROGRAM}"
     ;;
   *)
     printf 'Unsupported SUPERVISOR_ACTION: %s\n' "${SUPERVISOR_ACTION}" >&2
